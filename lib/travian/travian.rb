@@ -8,5 +8,9 @@ module Travian
       yield @@config
       return @@config
     end
+
+    def config
+      @@config
+    end
   end
 end
