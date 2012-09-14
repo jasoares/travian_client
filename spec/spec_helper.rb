@@ -17,3 +17,4 @@ RSpec.configure do |config|
 end
 
 require 'travian'
+require 'fakeweb'
