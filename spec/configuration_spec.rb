@@ -38,7 +38,7 @@ module Travian
 
     describe '.[]' do
       it 'should show the current value of server when passed :server' do
-        @cfg[:server].should == 'server.travian.com'
+        @cfg[:server].should == 'http://server.travian.com'
       end
 
       it 'should access the value stored in user attribute when passed :user' do

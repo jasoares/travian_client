@@ -1,6 +1,5 @@
 require 'spec_helper.rb'
 
-FakeWeb.allow_net_connect = false
 FakeWeb.register_uri(
   :get,
   "http://tx3.travian.com.br/",

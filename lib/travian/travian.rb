@@ -19,7 +19,7 @@ module Travian
     end
 
     def login
-      login_form = @@agent.get("http://#{@@config.server}/").form
+      login_form = @@agent.get(@@config.server).form
       username_field = login_form.fields.find {|f| f.name = "name" }
       username_field.value = @@config.user
       login_form.password = @@config.password

@@ -1,10 +1,11 @@
 module Travian
   class Configuration
 
-    attr_accessor :server, :user, :password
+    attr_reader :server
+    attr_accessor :user, :password
 
     def initialize
-      @server = 'server.travian.com'
+      @server = 'http://server.travian.com'
       @user = 'username'
       @password = 'password'
     end
@@ -15,6 +16,10 @@ module Travian
 
     def []=(attribute, value)
       self.send(:"#{attribute}=", value)
+    end
+
+    def server=(address)
+      @server = "http://#{address}"
     end
 
     def attributes
