@@ -18,3 +18,4 @@ end
 
 require 'travian'
 require 'fakeweb'
+FakeWeb.allow_net_connect= false
