@@ -1,6 +1,5 @@
 module Travian
   class Village
-    include Helpers::UrlHelper
 
     @@list = nil
 
