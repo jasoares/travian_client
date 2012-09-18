@@ -18,6 +18,10 @@ module Travian
       @@config
     end
 
+    def config=(cfg)
+      @@config = cfg
+    end
+
     def login
       login_form = @@agent.get(@@config.server).form
       username_field = login_form.fields.find {|f| f.name = "name" }
