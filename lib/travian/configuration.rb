@@ -4,10 +4,9 @@ module Travian
     attr_reader :server
     attr_accessor :user, :password
 
-    def initialize
-      @server = 'http://server.travian.com'
-      @user = 'username'
-      @password = 'password'
+    def initialize(server='tx3.travian.com.br', user='user', password='password')
+      @server = "http://#{server}"
+      @user, @password = user, password
     end
 
     def [](attribute)
