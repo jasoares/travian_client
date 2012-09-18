@@ -2,17 +2,24 @@ module Travian
   class Village
     include Helpers::UrlHelper
 
-    attr_reader :name, :link
+    @@list = nil
 
-    def initialize(name, link)
-      @name, @link = name, link
+    attr_reader :name, :id
+
+    def initialize(name, id)
+      @name, @id = name, id
     end
 
     class << self
       def list
-        Travian.bot.current_page.search('ul#villageListLinks a').map do |link|
-          Village.new(link.text, "#{Travian.config[:server]}/dorf1.php#{link['href']}")
+        unless @@list
+          villages_page = Travian.bot.get(Travian.config.server + "/dorf3.php")
+          @@list = villages_page.search('td.vil.fc a').map do |village|
+            id = $1.to_i if village['href'].match(/(\d+)\z/)
+            Village.new(village.text, id)
+          end
         end
+        @@list
       end
     end
   end
