@@ -27,8 +27,7 @@ module Travian
       username_field = login_form.fields.find {|f| f.name = "name" }
       username_field.value = @@config.user
       login_form.password = @@config.password
-      page = @@agent.submit(login_form)
-      return page if page.search('.error.LTR').empty?
+      return @@agent if @@agent.submit(login_form).search('.error.LTR').empty?
       raise InvalidConfigurationError
     end
 
