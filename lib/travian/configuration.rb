@@ -25,6 +25,12 @@ module Travian
       [:server, :user, :password]
     end
 
+    def to_s
+      "Server: #{server}\n" +
+      "Username: #{user}\n" +
+      "Password: #{password.gsub(/./, '*')}\n"
+    end
+
     alias :keys :attributes
   end
 end
