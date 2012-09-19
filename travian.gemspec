@@ -24,4 +24,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'cucumber'
   gem.add_development_dependency 'fakeweb'
+  gem.add_development_dependency 'timecop'
 end

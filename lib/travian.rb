@@ -1,6 +1,7 @@
 require "travian/version"
 require "travian/configuration"
 require "travian/village"
+require "travian/attack"
 require "travian/travian"
 
 Travian.configure do |cfg|
