@@ -3,6 +3,7 @@ require "travian/configuration"
 require "travian/village"
 require "travian/attack"
 require "travian/travian"
+require "travian/resource"
 
 Travian.configure do |cfg|
   cfg.server = 'tx3.travian.com.br'
