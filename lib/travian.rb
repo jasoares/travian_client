@@ -1,5 +1,6 @@
 require "travian/version"
 require "travian/configuration"
+require "travian/helpers/url_helper"
 require "travian/village"
 require "travian/attack"
 require "travian/travian"
