@@ -19,6 +19,14 @@ module Travian
       Village.capacity(self)
     end
 
+    def ==(other)
+      self.id == other.id
+    end
+
+    def to_s
+      "#{name}(#{id})"
+    end
+
     class << self
 
       @@list = nil
