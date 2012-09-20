@@ -34,6 +34,10 @@ module Travian
       Resource.new(*(self.map {|res| res * times }))
     end
 
+    def /(res)
+      self.zip(res).map {|r1, r2| r1 / r2 }.min
+    end
+
     def <=>(res)
       side_by_side = self.zip(res)
       return -1 if side_by_side.any? {|res1, res2| res1 > res2 }

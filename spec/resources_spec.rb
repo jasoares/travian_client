@@ -74,6 +74,13 @@ module Travian
         end
       end
 
+      describe '#/' do
+        it 'returns the lowest division result of dividing each type of resource' do
+          res = Resource.new(90, 50, 70, 40)
+          (@res / res).should be 1
+        end
+      end
+
       describe '#<=>' do
         context 'when compared to 120 wood, 180 clay, 232 iron and 412 crop' do
           it 'should return 0' do
