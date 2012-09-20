@@ -42,7 +42,7 @@ module Travian
         @@list
       end
 
-      def by_name(name)
+      def find_by_name(name)
         @@list ||= list
         @@list.select {|v| v.name.match(/.*#{name}.*/i) }
       end

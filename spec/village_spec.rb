@@ -24,9 +24,9 @@ module Travian
       end
     end
 
-    describe '.by_name' do
+    describe '.find_by_name' do
       it 'should return an array' do
-        Village.by_name("something").should be_an Array
+        Village.find_by_name("something").should be_an Array
       end
 
       context 'when passed "al" as the search term' do
@@ -38,11 +38,11 @@ module Travian
         end
 
         it 'should have exactly 2 villages' do
-          Village.by_name("al").should have_exactly(2).villages
+          Village.find_by_name("al").should have_exactly(2).villages
         end
 
         it 'should find "Almancil" and "São Brás de Alportel"' do
-          Village.by_name("al").should == @villages
+          Village.find_by_name("al").should == @villages
         end
       end
     end
@@ -150,6 +150,24 @@ module Travian
             @village.capacity.should == @capacity
           end
         end
+      end
+    end
+
+    context 'given a village receiving 2 atacks' do
+      before :all do
+        FakeWeb.register_uri(
+          :get,
+          "http://tx3.travian.com.br/dorf3.php",
+          :body => "./spec/fakeweb_pages/brx_dorf3_under_attack.html",
+          :content_type => "text/html"
+        )
+        FakeWeb.register_uri(
+          :get,
+          "http://tx3.travian.com.br/dorf1.php?newdid=43968",
+          :body => "./spec/fakeweb_pages/brx1_under_attack.html",
+          :content_type => "text/html"
+        )
+        @village = Village.find_by_name("Faro")
       end
     end
   end
