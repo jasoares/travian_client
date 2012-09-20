@@ -61,5 +61,15 @@ module Travian
     def each
       to_a.each {|res| yield res }
     end
+
+    class << self
+      def parse_resources(string)
+        Resource.new(*string.map {|s| s.split('/').first.to_i })
+      end
+
+      def parse_capacity(string)
+        Resource.new(*string.map {|s| s.split('/').last.to_i })
+      end
+    end
   end
 end
