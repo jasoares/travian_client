@@ -9,6 +9,7 @@ module Travian
 
   class Client
     include Configurable
+    include Helpers::UrlHelper
     include API
 
     attr_reader :start_village
@@ -23,7 +24,7 @@ module Travian
 
     def get(url, params={})
       if url.is_a? Symbol
-        url = "http://#{options[:server]}" + Helpers::UrlHelper.url_for(url, params)
+        url = "http://#{options[:server]}" + url_for(url, params)
       end
       @agent.get(url)
     end

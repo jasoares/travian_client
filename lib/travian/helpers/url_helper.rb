@@ -8,6 +8,8 @@ module Travian
       extend self
       extend BuildingHelper
 
+      private
+
       LINK_TO = {
         :root       => '/',
         :resources  => '/dorf1.php',
@@ -19,6 +21,8 @@ module Travian
         :villages   => '/dorf3.php',
         :building   => '/build.php',
       }
+
+      module_function
 
       def url_for(target, params={})
         url = case target
@@ -33,8 +37,6 @@ module Travian
         end
         url
       end
-
-      private
 
       def url_for_village(village, options={})
         url = ""
