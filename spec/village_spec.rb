@@ -14,39 +14,6 @@ module Travian
       )
     end
 
-    describe '.list' do
-      it 'returns an array' do
-        Village.list.should be_an Array
-      end
-
-      it 'should be an array with village objects' do
-        Village.list.all? {|v| v.is_a? Village }.should be true
-      end
-    end
-
-    describe '.find_by_name' do
-      it 'should return an array' do
-        Village.find_by_name("something").should be_an Array
-      end
-
-      context 'when passed "al" as the search term' do
-        before :all do
-          @villages = [
-            Village.new('Almancil', 67924),
-            Village.new('São Brás de Alportel', 59519)
-          ]
-        end
-
-        it 'should have exactly 2 villages' do
-          Village.find_by_name("al").should have_exactly(2).villages
-        end
-
-        it 'should find "Almancil" and "São Brás de Alportel"' do
-          Village.find_by_name("al").should == @villages
-        end
-      end
-    end
-
     describe '#==' do
       context 'given two villages with the same name but different ids' do
         before :each do
@@ -89,7 +56,7 @@ module Travian
           :body => "./spec/fakeweb_pages/brx_dorf1_id_67924.html",
           :content_type => "text/html"
         )
-        @village = Village.list.first
+        @village = Travian.village("Almancil")
       end
 
       describe '#name' do
@@ -150,24 +117,6 @@ module Travian
             @village.capacity.should == @capacity
           end
         end
-      end
-    end
-
-    context 'given a village receiving 2 atacks' do
-      before :all do
-        FakeWeb.register_uri(
-          :get,
-          "http://tx3.travian.com.br/dorf3.php",
-          :body => "./spec/fakeweb_pages/brx_dorf3_under_attack.html",
-          :content_type => "text/html"
-        )
-        FakeWeb.register_uri(
-          :get,
-          "http://tx3.travian.com.br/dorf1.php?newdid=43968",
-          :body => "./spec/fakeweb_pages/brx1_under_attack.html",
-          :content_type => "text/html"
-        )
-        @village = Village.find_by_name("Faro")
       end
     end
   end

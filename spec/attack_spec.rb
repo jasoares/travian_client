@@ -1,4 +1,5 @@
 require 'spec_helper.rb'
+require 'travian/attack'
 require 'timecop'
 
 module Travian
@@ -63,38 +64,6 @@ module Travian
       end
     end
 
-    describe '.incoming?' do
-      context 'given there are incoming attacks' do
-        before :each do
-          FakeWeb.register_uri(
-            :get,
-            "http://tx3.travian.com.br/dorf3.php",
-            :body => "./spec/fakeweb_pages/brx_dorf3_under_attack.html",
-            :content_type => "text/html"
-          )
-        end
-
-        it 'returns true' do
-          Attack.incoming?.should be true
-        end
-      end
-
-      context 'given there are no incoming attacks' do
-        before :each do
-          FakeWeb.register_uri(
-            :get,
-            "http://tx3.travian.com.br/dorf3.php",
-            :body => "./spec/fakeweb_pages/brx_dorf3.html",
-            :content_type => "text/html"
-          )
-        end
-
-        it 'returns false' do
-          Attack.incoming?.should be false
-        end
-      end
-    end
-
     describe '.parse' do
       context 'given a time of the format "02:56:57"' do
         before :each do
@@ -140,7 +109,3 @@ module Travian
     end
   end
 end
-
-#table.troop_details.inAttack div.at span (first)
-
-#table#overview img.att1

@@ -22,12 +22,5 @@ module Travian
       return t if t >= n
       Time.at(t + 24 * 3600)
     end
-
-    class << self
-      def incoming?
-        villages_page = Travian.bot.get(Travian.config.server + "/dorf3.php")
-        return !villages_page.search('table#overview img.att1').empty?
-      end
-    end
   end
 end

@@ -1,5 +1,7 @@
+require 'travian/resource'
+
 module Travian
-  class Village < TravianObject
+  class Village
 
     attr_reader :name, :id
 
@@ -8,15 +10,19 @@ module Travian
     end
 
     def production
-      Village.production(self)
+      Travian.production_in(self)
     end
 
     def resources
-      Village.resources(self)
+      Travian.resources_in(self)
     end
 
     def capacity
-      Village.capacity(self)
+      Travian.capacity_in(self)
+    end
+
+    def percentage_filled
+      resources * 100.0 / capacity
     end
 
     def ==(other)
@@ -25,53 +31,6 @@ module Travian
 
     def to_s
       "#{name}(#{id})"
-    end
-
-    class << self
-
-      @@list = nil
-
-      def list
-        unless @@list
-          villages_page = Travian.bot.get(url_for(:villages))
-          @@list = villages_page.search('td.vil.fc a').map do |village|
-            id = $1.to_i if village['href'].match(/(\d+)\z/)
-            Village.new(village.text, id)
-          end
-        end
-        @@list
-      end
-
-      def find_by_name(name)
-        @@list ||= list
-        @@list.select {|v| v.name.match(/.*#{name}.*/i) }
-      end
-
-      def production(village)
-        values = page(village).search('#production td.num').text.gsub(/[^\d]+/, ' ')
-        res = values.match(/(\d+) (\d+) (\d+) (\d+)/).captures.map {|v| v.to_i }
-        Resource.new(*res)
-      end
-
-      def resources(village)
-        Resource.parse_resources(res_data(village))
-      end
-
-      def capacity(village)
-        Resource.parse_capacity(res_data(village))
-      end
-
-      private
-
-      def res_data(village)
-        1.upto(4).map.with_index do |idx|
-          page(village).search("span#l#{idx}.value").text
-        end
-      end
-
-      def page(village)
-        Travian.bot.get(url_for(village))
-      end
     end
   end
 end
