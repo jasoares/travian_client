@@ -19,7 +19,7 @@ module Travian
       Travian::Configurable.keys.each do |key|
         instance_variable_set(:"@#{key}", options[key])
       end
-      raise InvalidConfigurationError unless login
+      raise InvalidConfigurationError unless configured? && login
     end
 
     def get(url, params={})
