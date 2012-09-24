@@ -20,9 +20,3 @@ module Travian
     end
   end
 end
-
-Travian.configure do |cfg|
-  cfg.server = 'tx3.travian.com.br'
-  cfg.user = 'user'
-  cfg.password = 'password'
-end

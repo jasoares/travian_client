@@ -1,27 +1,6 @@
 # encoding: utf-8
 require 'spec_helper.rb'
 
-FakeWeb.register_uri(
-  :get,
-  "http://tx3.travian.com.br",
-  :body => "./spec/fakeweb_pages/brx_login.html",
-  :content_type => "text/html"
-)
-
-FakeWeb.register_uri(
-  :post,
-  "http://tx3.travian.com.br/dorf1.php",
-  :body => "./spec/fakeweb_pages/brx_dorf1.html",
-  :content_type => "text/html"
-)
-
-FakeWeb.register_uri(
-  :get,
-  "http://tx3.travian.com.br/dorf3.php",
-  :body => "./spec/fakeweb_pages/brx_dorf3.html",
-  :content_type => "text/html"
-)
-
 module Travian
   describe API do
     describe '.villages' do
@@ -61,14 +40,7 @@ module Travian
 
     describe '.incoming_attacks?' do
       context 'given there are incoming attacks' do
-        before :each do
-          FakeWeb.register_uri(
-            :get,
-            "http://tx3.travian.com.br/dorf3.php",
-            :body => "./spec/fakeweb_pages/brx_dorf3_under_attack.html",
-            :content_type => "text/html"
-          )
-        end
+        before(:all) { fake_incoming_attacks }
 
         it 'returns true' do
           Travian.incoming_attacks?.should be true

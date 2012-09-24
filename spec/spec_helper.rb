@@ -18,4 +18,14 @@ end
 
 require 'travian'
 require 'fakeweb'
+require 'fake_helper.rb'
+
+Travian.configure do |cfg|
+  cfg.server = 'tx3.travian.com.br'
+  cfg.user = 'user'
+  cfg.password = 'password'
+end
+
 FakeWeb.allow_net_connect= false
+fake_login
+fake_basic_travian
