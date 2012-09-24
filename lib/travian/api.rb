@@ -22,6 +22,13 @@ module Travian
       get(:villages).search('img.att1').any?
     end
 
+    def attacks_to?(village)
+      village = village(village) if village.is_a? String
+      get(:villages).search('table#overview tr').find do |row|
+        row.search('td.vil.fc a').text == village.name
+      end.search('img.att1').any?
+    end
+
     def resources_in(v)
       v = village(v) if v.is_a? String
       Resource.new(*res_data(v).map {|i| i.first })

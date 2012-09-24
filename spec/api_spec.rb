@@ -48,17 +48,32 @@ module Travian
       end
 
       context 'given there are no incoming attacks' do
-        before :each do
-          FakeWeb.register_uri(
-            :get,
-            "http://tx3.travian.com.br/dorf3.php",
-            :body => "./spec/fakeweb_pages/brx_dorf3.html",
-            :content_type => "text/html"
-          )
-        end
+        before(:all) { fake_no_incoming_attacks }
 
         it 'returns false' do
           Travian.incoming_attacks?.should be false
+        end
+      end
+    end
+
+    describe '.attacks_to?' do
+      context 'given there are no incoming attacks' do
+        before(:all) { fake_no_incoming_attacks }
+
+        it 'returns false' do
+          Travian.attacks_to?("Faro").should == false
+        end
+      end
+
+      context 'given there are incoming attacks only to Faro' do
+        before(:all) { fake_incoming_attacks }
+
+        it 'returns true when passed "Faro"' do
+          Travian.attacks_to?("Faro").should == true
+        end
+
+        it 'returns false when passed "Almancil"' do
+          Travian.attacks_to?("Almancil").should == false
         end
       end
     end
