@@ -35,7 +35,7 @@ module Travian
     def production_in(v)
       v = village(v) if v.is_a? String
       Resource.new(
-        *get(:resources, :village => v).search('#production td.num').
+        *get(:resources, v).search('#production td.num').
         text.gsub(/[^\d]+/, ' ').match(/(\d+) (\d+) (\d+) (\d+)/).captures.map {|p| p.to_i }
       )
     end
@@ -43,7 +43,7 @@ module Travian
     private
 
     def res_data(v)
-      get(:resources, :village => v).search(".value").map do |r|
+      get(:resources, v).search(".value").map do |r|
         r.text.split('/').map {|s| s.to_i }
       end.first(4)
     end

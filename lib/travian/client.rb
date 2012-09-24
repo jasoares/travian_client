@@ -22,11 +22,11 @@ module Travian
       raise InvalidConfigurationError unless configured? && login
     end
 
-    def get(url, params={})
-      if url.is_a? Symbol
-        url = "http://#{options[:server]}" + url_for(url, params)
+    def get(page, village=nil, params={})
+      unless page.is_a? String
+        page = "http://#{options[:server]}" + url_for(page, village, params)
       end
-      @agent.get(url)
+      @agent.get(page)
     end
 
     def reset_village
