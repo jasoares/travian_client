@@ -13,12 +13,20 @@ module Travian
       Travian.production_in(self)
     end
 
+    def buildings
+      Travian.buildings_of(self)
+    end
+
     def resources
       Travian.resources_in(self)
     end
 
     def capacity
       Travian.capacity_in(self)
+    end
+
+    def type
+      Travian.type_of_village(self)
     end
 
     def percentage_filled
