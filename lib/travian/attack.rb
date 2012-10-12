@@ -12,7 +12,7 @@ module Travian
     end
 
     def in
-      (at - Time.now.utc.to_i).strftime("%T")
+      (at.utc - Time.now.utc.to_i).strftime("%T")
     end
 
     protected

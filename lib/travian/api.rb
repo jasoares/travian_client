@@ -90,7 +90,7 @@ module Travian
       type_data = V_TYPES[type_of_village(v)]
       lvls = get(:resources, v).search('div.level').map(&:text).map(&:to_i)
       1.upto(18).map do |id|
-        Travian::Building.new(TravWiki::Building.by_gid(type_data[id]), id, lvls[id - 1])
+        Travian::Building.new(type_data[id], id, lvls[id - 1])
       end
     end
 
@@ -123,11 +123,4 @@ module Travian
       end.first(4)
     end
   end
-end
-
-def build_info
-  page = @agent.get('http://tx3.travian.com.br/dorf2.php?newdid=59519')
-  gids = page.search('div#village_map img[class^="building g"]').map {|img| img['class'].match(/building g(\d+)/); $1.to_i }
-  lvls = page.search('div#levels div[class^="aid"]').map(&:text).map(&:to_i)
-  gids.zip(lvls).map {|gid, lvl| [TravWiki::Building.name_for(gid), lvl] }
 end

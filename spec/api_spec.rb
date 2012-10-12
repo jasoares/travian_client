@@ -92,14 +92,14 @@ module Travian
         end
       end
 
-      context 'given there are 2 incoming attacks to Faro' do
+      context 'given there are 3 incoming attacks to Faro' do
         before(:all) do
           fake_incoming_attacks
           fake_rally_point_under_raid_and_attack
         end
 
         it 'returns an array of two attacks when passed "Faro"' do
-          Travian.attacks_to("Faro").should == 1
+          Travian.attacks_to("Faro").should have_exactly(3).attacks
         end
       end
     end
