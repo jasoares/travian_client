@@ -4,6 +4,7 @@ require 'trav_wiki/core_ext/string'
 require 'travian/village'
 require 'travian/resource'
 require 'travian/attack'
+require 'travian/user'
 
 module Travian
   module API
@@ -28,6 +29,15 @@ module Travian
         id = $1.to_i if village['href'].match(/(\d+)\z/)
         Village.new(village.text, id)
       end
+    end
+
+    def user(uid=user_uid)
+      User.parse_profile(uid, get(:profile, nil, :uid => uid))
+    end
+
+    def user_uid
+      get(:villages).search('a[href^="spieler.php"]').first['href'].match(/spieler.php\?uid=(\d+)/)
+      $1.to_i
     end
 
     def villages_by_name(query)

@@ -19,6 +19,7 @@ module Travian
         :map        => '/karte.php',
         :villages   => '/dorf3.php',
         :building   => '/build.php',
+        :profile    => '/spieler.php',
       }
 
       module_function

@@ -16,8 +16,8 @@ module Travian
       self.class.new(*(self.map {|amount| amount * scalar }))
     end
 
-    def /(countable)
-      self.zip(countable).map {|a1, a2| a1 / a2 }.min
+    def /(countable, float=true)
+      self.zip(countable).map {|a1, a2| float ? a1.to_f / a2 : a1 / a2 }.min
     end
   end
 end

@@ -1,4 +1,5 @@
 require 'travian/resource'
+require 'trav_wiki/timespan'
 
 module Travian
   class Village
@@ -31,6 +32,14 @@ module Travian
 
     def percentage_filled
       resources * 100.0 / capacity
+    end
+
+    def remaining_capacity
+      capacity - resources
+    end
+
+    def full_in
+      TravWiki::Timespan.float_hours(remaining_capacity./(production, true))
     end
 
     def ==(other)
