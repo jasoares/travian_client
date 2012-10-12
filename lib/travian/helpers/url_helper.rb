@@ -6,7 +6,6 @@ module Travian
   module Helpers
     module UrlHelper
       extend self
-      extend BuildingHelper
 
       private
 
@@ -32,7 +31,7 @@ module Travian
           url += "?" unless village
         end
         url += params.each_pair.map do |k,v|
-          k == :gid ? "#{k}=#{gid_for(v)}" : "#{k}=#{v}"
+          k == :gid ? "#{k}=#{BuildingHelper.gid_for(v)}" : "#{k}=#{v}"
         end.join("&")
       end
     end

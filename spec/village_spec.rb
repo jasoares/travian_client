@@ -119,5 +119,23 @@ module Travian
         end
       end
     end
+
+    context 'given a village receiving 2 atacks' do
+      before :all do
+        FakeWeb.register_uri(
+          :get,
+          "http://tx3.travian.com.br/dorf3.php",
+          :body => "./spec/fakeweb_pages/brx_dorf3_under_attack.html",
+          :content_type => "text/html"
+        )
+        FakeWeb.register_uri(
+          :get,
+          "http://tx3.travian.com.br/dorf1.php?newdid=43968",
+          :body => "./spec/fakeweb_pages/brx1_under_attack.html",
+          :content_type => "text/html"
+        )
+        @village = Village.find_by_name("Faro")
+      end
+    end
   end
 end

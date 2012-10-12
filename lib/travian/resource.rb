@@ -1,7 +1,10 @@
+require 'travian/countable'
+
 module Travian
   class Resource
     include Enumerable
     include Comparable
+    include Countable
     attr_accessor :wood, :clay, :iron, :crop
 
     def initialize(wood=0, clay=0, iron=0, crop=0)
@@ -14,28 +17,7 @@ module Travian
 
     def to_s
       r = self.map {|res| res.to_s.rjust(9) }
-      str = "wood: #{r[0]}|clay: #{r[1]}|iron: #{r[2]}|cereal: #{r[3]}"
-      str.split('|').join(' | ')
-    end
-
-    def +(res)
-      Resource.new(*self.zip(res).map {|r1, r2| r1 + r2 })
-    end
-
-    def -@
-      Resource.new(*self.map{|res| -res })
-    end
-
-    def -(res)
-      self + (-res)
-    end
-
-    def *(times)
-      Resource.new(*(self.map {|res| res * times }))
-    end
-
-    def /(res)
-      self.zip(res).map {|r1, r2| r1 / r2 }.min
+      "wood: #{r[0]} | clay: #{r[1]} | iron: #{r[2]} | cereal: #{r[3]}"
     end
 
     def <=>(res)

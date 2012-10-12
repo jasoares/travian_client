@@ -19,7 +19,8 @@ module Travian
       Travian::Configurable.keys.each do |key|
         instance_variable_set(:"@#{key}", options[key])
       end
-      raise InvalidConfigurationError unless configured? && login
+      raise InvalidConfigurationError, "Invalid user or password" unless configured? and login
+      @start_village = @agent.current_page.search('ul#villageListLinks a.active').first.text
     end
 
     def get(page, village=nil, params={})
@@ -43,7 +44,9 @@ module Travian
       login_form.password = credentials[:password]
       login_form.checkbox_with(:name => 'lowRes').check
       @agent.submit(login_form).search('.error.LTR').empty?
-      @start_village = @agent.current_page.search('ul#villageListLinks a.active').first.text
+    rescue
+      raise InvalidConfigurationError,
+        'Invalid server address, do not include "http://"'
     end
   end
 end

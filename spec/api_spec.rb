@@ -77,5 +77,31 @@ module Travian
         end
       end
     end
+
+    describe '.attacks_to' do
+      before(:all) { fake_building_gids_lookup_page }
+
+      context 'given there no incoming attacks' do
+        before(:all) do
+          fake_no_incoming_attacks
+          fake_rally_point_no_attacks
+        end
+
+        it 'returns an empty array' do
+          Travian.attacks_to("Faro").should be_empty
+        end
+      end
+
+      context 'given there are 2 incoming attacks to Faro' do
+        before(:all) do
+          fake_incoming_attacks
+          fake_rally_point_under_raid_and_attack
+        end
+
+        it 'returns an array of two attacks when passed "Faro"' do
+          Travian.attacks_to("Faro").should == 1
+        end
+      end
+    end
   end
 end

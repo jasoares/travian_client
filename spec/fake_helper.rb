@@ -72,3 +72,30 @@ def fake_building_gids_lookup_page
     :content_type => "text/html"
   )
 end
+
+def fake_rally_point_under_attack
+  FakeWeb.register_uri(
+    :get,
+    "http://tx3.travian.com.br/build.php?newdid=43968&gid=16&tt=1",
+    :body => "./spec/fakeweb_pages/brx_rally_point_under_attack.html",
+    :content_type => "text/html"
+  )
+end
+
+def fake_rally_point_under_raid_and_attack
+  FakeWeb.register_uri(
+    :get,
+    "http://tx3.travian.com.br/build.php?newdid=43968&gid=16&tt=1",
+    :body => "./spec/fakeweb_pages/brx_rally_point_under_raid_and_attack.html",
+    :content_type => "text/html"
+  )
+end
+
+def fake_rally_point_no_attacks
+  FakeWeb.register_uri(
+    :get,
+    "http://tx3.travian.com.br/build.php?newdid=43968&gid=16&tt=1",
+    :body => "./spec/fakeweb_pages/brx_rally_point_no_attacks.html",
+    :content_type => "text/html"
+  )
+end
