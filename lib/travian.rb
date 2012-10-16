@@ -5,12 +5,12 @@ module Travian
   class << self
     include Configurable
 
+    private
+
     def client
       @client = Client.new(options) unless defined?(@client) && @client.cache_key == options.hash
       @client
     end
-
-    private
 
     # Delegate to current Travian::Client
     # @return [Travian::Client]

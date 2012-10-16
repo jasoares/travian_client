@@ -1,7 +1,7 @@
 require 'mechanize'
 require 'travian/configurable'
-require 'travian/helpers/url_helper'
 require 'travian/api'
+require 'travian/base_building'
 
 module Travian
 
@@ -9,8 +9,20 @@ module Travian
 
   class Client
     include Configurable
-    include Helpers::UrlHelper
     include API
+
+    LINK_TO = {
+      :root       => '/',
+      :resources  => '/dorf1.php',
+      :center     => '/dorf2.php',
+      :statistics => '/statistiken.php',
+      :reports    => '/berichte.php',
+      :messages   => '/nachrichten.php',
+      :map        => '/karte.php',
+      :villages   => '/dorf3.php',
+      :building   => '/build.php',
+      :profile    => '/spieler.php',
+    }
 
     attr_reader :start_village
 
@@ -30,9 +42,25 @@ module Travian
       @agent.get(page)
     end
 
+    def fetch(url={})
+      agent.get url.is_a?(String) ? url : answers(url)
+    end
+
     def reset_village
       get(:resources, :village => village(@start_village))
       @start_village
+    end
+
+    def url_for(page, object=nil, params={})
+      url = LINK_TO[page]
+      url += "?newdid=#{object.id}" if object
+      if params.size > 0
+        url += "&" if object
+        url += "?" unless object
+      end
+      url += params.each_pair.map do |k,v|
+        k == :gid ? "#{k}=#{BaseBuilding.gid_for(v)}" : "#{k}=#{v}"
+      end.join("&")
     end
 
     private

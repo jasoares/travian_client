@@ -1,5 +1,6 @@
+require 'travian/timespan'
 require 'travian/resource'
-require 'trav_wiki/timespan'
+require 'travian/client'
 
 module Travian
   class Village
@@ -11,23 +12,23 @@ module Travian
     end
 
     def production
-      Travian.production_in(self)
+      Village.production_in(self)
     end
 
     def buildings
-      Travian.buildings_of(self)
+      Village.buildings_of(self)
     end
 
     def resources
-      Travian.resources_in(self)
+      Village.resources_in(self)
     end
 
     def capacity
-      Travian.capacity_in(self)
+      Village.capacity_in(self)
     end
 
     def type
-      Travian.type_of_village(self)
+      Village.type_of_village(self)
     end
 
     def percentage_filled
@@ -39,7 +40,7 @@ module Travian
     end
 
     def full_in
-      TravWiki::Timespan.float_hours(remaining_capacity./(production, true))
+      Timespan.float_hours(remaining_capacity./(production, true))
     end
 
     def ==(other)
@@ -48,6 +49,39 @@ module Travian
 
     def to_s
       "#{name}(#{id})"
+    end
+
+    class << self
+
+      def by_name(query)
+        villages.select {|v| v.name.match(/.*#{query.to_s}.*/i) }
+      end
+
+      def resources_in(v)
+        v = village(v) if v.is_a? String
+        Resource.new(*res_data(v).map {|i| i.first })
+      end
+
+      def capacity_in(v)
+        v = village(v) if v.is_a? String
+        Resource.new(*res_data(v).map {|i| i.last })
+      end
+
+      def production_in(v)
+        v = village(v) if v.is_a? String
+        Resource.new(
+          *Travian.get(:resources, v).search('#production td.num').
+          text.gsub(/[^\d]+/, ' ').match(/(\d+) (\d+) (\d+) (\d+)/).captures.map {|p| p.to_i }
+        )
+      end
+
+      private
+
+      def res_data(v)
+        Travian.get(:resources, v).search(".value").map do |r|
+          r.text.split('/').map {|s| s.to_i }
+        end.first(4)
+      end
     end
   end
 end

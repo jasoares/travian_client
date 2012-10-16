@@ -1,11 +1,12 @@
-require 'trav_wiki'
+require 'travian/building'
+require 'travian/base_building'
 
 module Travian
   class Building
     attr_reader :base_building, :id, :level
 
     def initialize(gid, id, level)
-      @base_building = TravWiki::Building[gid]
+      @base_building = BaseBuilding[gid]
       @id, @level = id, level
     end
 

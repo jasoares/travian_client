@@ -45,6 +45,7 @@ module Travian
     end
 
     class << self
+
       def parse_resources(res_data)
         Resource.new(*res_data.map {|s| s.split('/').first.to_i })
       end
@@ -52,6 +53,7 @@ module Travian
       def parse_capacity(res_data)
         Resource.new(*res_data.map {|s| s.split('/').last.to_i })
       end
+
     end
   end
 end

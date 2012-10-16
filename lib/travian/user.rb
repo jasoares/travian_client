@@ -1,9 +1,9 @@
 module Travian
   class User
-    attr_reader :uid, :name, :alliance
+    attr_reader :uid, :name, :aid
 
-    def initialize(uid, name, alliance)
-      @uid, @name, @alliance = uid, name, alliance
+    def initialize(uid, name, aid)
+      @uid, @name, @aid = uid, name, aid
     end
 
     class << self
@@ -11,8 +11,9 @@ module Travian
       def parse_profile(uid, profile)
         profile.search('#content h1.titleInHeader').first.text.match(/.+\s-\s(.+)/)
         name = $1
-        alliance = profile.search('table#details a[href^="allianz.php"]').first.text
-        User.new(uid, name, alliance)
+        profile.search('table#details a[href^="allianz.php"]').first['href'].match(/allianz.php\?(\d+)/)
+        aid = $1.to_i
+        User.new(uid, name, aid)
       end
 
     end

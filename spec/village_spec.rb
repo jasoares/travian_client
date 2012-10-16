@@ -3,8 +3,6 @@ require 'spec_helper.rb'
 
 module Travian
   describe Village do
-    subject { Village }
-
     before :all do
       FakeWeb.register_uri(
         :get,

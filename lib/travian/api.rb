@@ -1,6 +1,5 @@
-require 'trav_wiki'
 require 'yaml'
-require 'trav_wiki/core_ext/string'
+require 'travian/core_ext/string'
 require 'travian/village'
 require 'travian/resource'
 require 'travian/attack'
@@ -41,7 +40,7 @@ module Travian
     end
 
     def villages_by_name(query)
-      villages.select {|v| v.name.match(/.*#{query}.*/i) }
+      villages.select {|v| v.name.match(/.*#{query.to_s}.*/i) }
     end
 
     def village(name)

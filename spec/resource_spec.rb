@@ -75,9 +75,9 @@ module Travian
       end
 
       describe '#/' do
-        it 'returns the lowest division result of dividing each type of resource' do
+        it 'returns the lowest division result with the fractional part of dividing each type of resource' do
           res = Resource.new(90, 50, 70, 40)
-          (@res / res).should be 1
+          (@res / res).should be_within(0.0001).of(1.3333)
         end
       end
 
