@@ -9,20 +9,6 @@ module Travian
   module API
     extend self
 
-    v_types = YAML.load_file('data/t4_village_types.yml')
-    v_types.each_pair do |type, desc|
-      desc.each_pair do |k,v|
-        v_types[type][k] = case v
-          when 'woodcutter' then 1
-          when 'clay pit' then 2
-          when 'iron mine' then 3
-          when 'cropland' then 4
-        end
-      end unless desc[1].nil?
-    end
-
-    V_TYPES = v_types
-
     def villages
       get(:villages).search('td.vil.fc a').map do |village|
         id = $1.to_i if village['href'].match(/(\d+)\z/)
@@ -88,19 +74,6 @@ module Travian
       v = village(v) if v.is_a? String
       get(:resources, v).search('div#village_map').first['class'].match(/f(\d+)/)
       $1.to_i
-    end
-
-    def village_types
-      V_TYPES
-    end
-
-    def resource_fields(v)
-      v = village(v) if v.is_a? String
-      type_data = V_TYPES[type_of_village(v)]
-      lvls = get(:resources, v).search('div.level').map(&:text).map(&:to_i)
-      1.upto(18).map do |id|
-        Travian::Building.new(type_data[id], id, lvls[id - 1])
-      end
     end
 
     def buildings_of(v)
