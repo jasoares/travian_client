@@ -9,7 +9,7 @@ module Travian
   module API
     extend self
 
-    v_types = YAML.load_file('t4_village_types.yml')
+    v_types = YAML.load_file('data/t4_village_types.yml')
     v_types.each_pair do |type, desc|
       desc.each_pair do |k,v|
         v_types[type][k] = case v

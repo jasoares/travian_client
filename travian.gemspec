@@ -19,7 +19,6 @@ Gem::Specification.new do |gem|
   
   # runtime
   gem.add_runtime_dependency 'mechanize'
-  gem.add_runtime_dependency 'trav_wiki'
 
   # development
   gem.add_development_dependency 'rspec'
