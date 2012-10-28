@@ -88,6 +88,10 @@ module Travian
       Timespan.new(h.hours + m.minutes + s.seconds)
     end
 
+    def self.[](*args)
+      Timespan.new(*args)
+    end
+
     private
 
     def self.parse_string(timestamp)

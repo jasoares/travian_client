@@ -46,6 +46,10 @@ module Travian
 
     class << self
 
+      def [](wood=0, clay=0, iron=0, crop=0)
+        Resource.new(wood, clay, iron, crop)
+      end
+
       def parse_resources(res_data)
         Resource.new(*res_data.map {|s| s.split('/').first.to_i })
       end
