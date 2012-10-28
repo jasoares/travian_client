@@ -51,11 +51,11 @@ module Travian
       end
 
       def parse_resources(res_data)
-        Resource.new(*res_data.map {|s| s.split('/').first.to_i })
+        Resource[*res_data.map {|s| s.split('/').first.to_i }]
       end
 
       def parse_capacity(res_data)
-        Resource.new(*res_data.map {|s| s.split('/').last.to_i })
+        Resource[*res_data.map {|s| s.split('/').last.to_i }]
       end
 
     end
