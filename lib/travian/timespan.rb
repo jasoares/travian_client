@@ -19,11 +19,11 @@ module Travian
 
     def +(other)
       return Time.at(other + self.to_i) if other.is_a? Time
-      Timespan.new(@time + other.to_i)
+      Timespan[@time + other.to_i]
     end
 
     def -(other)
-      Timespan.new(self.to_i - other.to_i)
+      Timespan[self.to_i - other.to_i]
     end
 
     def coerce(other)
@@ -31,11 +31,11 @@ module Travian
     end
 
     def /(scalar)
-      Timespan.new(self.to_i / scalar)
+      Timespan[self.to_i / scalar]
     end
 
     def *(scalar)
-      Timespan.new(self.to_i * scalar)
+      Timespan[self.to_i * scalar]
     end
 
     def to_i
@@ -58,7 +58,7 @@ module Travian
     def round_to(precision)
       res = @time % precision < precision / 2 ? @time : @time + precision
       res -= @time % precision
-      Timespan.new(res.to_i)
+      Timespan[res.to_i]
     end
 
     def past?
@@ -75,7 +75,7 @@ module Travian
     end
 
     def self.parse(timestamp)
-      Timespan.new(*parse_string(timestamp))
+      Timespan[*parse_string(timestamp)]
     end
 
     def self.float_hours(time)
@@ -85,7 +85,7 @@ module Travian
       m = fm.to_i
       fs = (fm - m) * 60
       s = fs.to_i
-      Timespan.new(h.hours + m.minutes + s.seconds)
+      Timespan[h.hours + m.minutes + s.seconds]
     end
 
     def self.[](*args)
