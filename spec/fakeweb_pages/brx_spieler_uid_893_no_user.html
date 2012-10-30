@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Travian brx</title>
+		<meta http-equiv="cache-control" content="max-age=0" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="imagetoolbar" content="no" />
+		<meta http-equiv="content-type"	content="text/html; charset=UTF-8" />
+		<meta name="content-language" content="br" />
+				<link href="gpack/travian_Travian_4.0_Banone/lang/br/compact.css?d13e6" rel="stylesheet" type="text/css" /><link href="gpack/travian_Travian_4.0_Banone/lang/br/lang.css?d13e6" rel="stylesheet" type="text/css" />				<link href="img/travian_basics.css" rel="stylesheet" type="text/css" />
+						<script type="text/javascript" src="crypt.js?1349334931"></script>
+<script type="text/javascript">
+Travian.Translation.add(
+{
+	'allgemein.anleitung':	'Instruções',
+	'allgemein.cancel':	'cancelar',
+	'allgemein.ok':	'OK',
+	'cropfinder.keine_ergebnisse': 'Nenhum resultado encontrado.'
+});
+Travian.applicationId = 'T4.0 Game';
+Travian.Game.version = '4.0';
+Travian.Game.worldId = 'brx18';
+Travian.Game.speed = 3;
+</script>						<script type="text/javascript">
+			Travian.Game.eventJamHtml = '&lt;a href=&quot;http://t4.answers.travian.com.br/index.php?aid=249#go2answer&quot; target=&quot;blank&quot; title=&quot;Travian Answers&quot;&gt;&lt;span class=&quot;c0 t&quot;&gt;0:00:0&lt;/span&gt;?&lt;/a&gt;'.unescapeHtml();
+		</script>
+					</head>
+	<body class="v35 webkit chrome player">
+							<div id="wrapper">
+								<img id="staticElements" src="img/x.gif" alt="" />
+									<div id="logoutContainer">
+						<a id="logout" href="logout.php" title="Sair">&nbsp;</a>
+					</div>
+								<div class="bodyWrapper">
+					
+										<img style="filter:chroma();" src="img/x.gif" id="msfilter" alt="" />
+					<div id="header">
+						<div id="mtop">
+							<a id="logo" href="http://www.travian.com.br/" target="_blank" title="Travian"></a>
+							<div id="myGameLinkHeaderWrapper">
+															</div>
+																					<ul id="navigation">
+					        	<li id="n1" class="resources">
+					        		<a class="" href="dorf1.php" accesskey="1" title="Recursos"></a>
+					        	</li>
+					            <li id="n2" class="village">
+					            	<a class="" href="dorf2.php" accesskey="2" title="Centro da Aldeia"></a>
+					            </li>
+					            <li id="n3" class="map">
+					            	<a class="" href="karte.php" accesskey="3" title="Mapa"></a>
+					            </li>
+					            <li id="n4" class="stats">
+					            	<a class="" href="statistiken.php" accesskey="4" title="Estatísticas"></a>
+					            </li>
+					            <li id="n5" class="reports">
+					            	<a class="" href="berichte.php" accesskey="5" title="Relatórios "></a>
+					            	<div class="ltr bubble" title="0 novos relatórios" style="display:none">
+	<div class="bubble-background-l"></div>
+	<div class="bubble-background-r"></div>
+	<div class="bubble-content">
+		0	</div>
+</div>					            </li>
+					            <li id="n6" class="messages">
+					            	<a class="" href="nachrichten.php" accesskey="6" title="Mensagens "></a>
+					            	<div class="ltr bubble" title="0 novas mensagens" style="display:none">
+	<div class="bubble-background-l"></div>
+	<div class="bubble-background-r"></div>
+	<div class="bubble-content">
+		0	</div>
+</div>					            </li>
+					        </ul>
+														<div class="clear"></div>
+						</div>
+											</div>
+
+					<div id="mid">
+												<a id="ingameManual" href="help.php" title="Ajuda">
+							<img src="img/x.gif" class="question" alt="Ajuda"/>
+						</a>
+
+												<div class="clear"></div>
+						<div id="contentOuterContainer">
+							<div class="contentTitle">&nbsp;</div>
+							<div class="contentContainer">
+								<div id="content" class="player"><h1 class="titleInHeader">Perfil do jogador</h1>								<div class="clear">&nbsp;</div>							</div>							<div class="clear"></div>
+						</div> 						<div class="contentFooter">&nbsp;</div>
+					</div>					<div id="side_info">
+		<div class="sideInfoHero">
+	<img id="heroImage" src="hero_image.php?uid=8964&amp;size=sideinfo&amp;9957583d34ad3f9a93d5562ae4efdb2c" class="heroImage" title="Herói" alt="Herói" />
+	<div class="heroImageBorder"></div>
+	<a id="heroProfile" href="hero_inventory.php" class="heroProfile"></a>
+	<a href="hero_adventure.php" class="adventures" title="Aventura"></a>
+	<a href="hero_auction.php" class="auctions" title="Leilões"></a>
+</div>
+
+<script type="text/javascript">
+	window.addEvent('domready', function()
+	{
+		var element = $('heroProfile');
+		if (!element)
+		{
+			return;
+		}
+		var fnHeroTitle = function()
+		{
+			element.removeEvent('mouseover', fnHeroTitle);
+			Travian.ajax(
+			{
+				data:
+				{
+					cmd: 'getHeroStatus'
+				},
+				onSuccess: function(data)
+				{
+					element.setTitle(data.statusInfoText);
+					Travian.Tip.show(data.statusInfoText);
+				}
+			});
+		};
+		element.addEvent('mouseover', fnHeroTitle);
+	});
+</script>	<div class="sideInfoPlayer">
+	<a class="signLink" href="spieler.php?uid=8964" title="Perfil">
+		<span class="wrap">jasoares</span>
+	</a>
+	<img class="nationBig nationBig2" title="Teutões" alt="Teutões" src="img/x.gif"/>
+</div>
+	<div class="sideInfoAlly">
+	<a class="signLink" href="allianz.php" title="Aliança">
+		<span class="wrap">•P&W•</span>
+	</a>
+	<a href="allianz.php?s=2" class="crest" title="Fórum da Aliança">
+		<img src="img/x.gif" alt="Brasão"  title="Fórum da Aliança" />
+	</a>
+	</div>
+	<div id="villageList" class="listing">
+	<div class="head">
+	<a href="dorf3.php" accesskey="9" title="Visão Geral da Aldeia">Aldeias</a>
+</div>
+<div class="list">
+	<ul id="villageListLinks">
+			<li class="entry ">
+						<a href="?newdid=81282&amp;uid=893"
+								class=""
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;2507F0663 A&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-41&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;82)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>2507F0663 A</a>
+		</li>
+			<li class="entry ">
+						<a href="?newdid=59519&amp;uid=893"
+								class=""
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;3501F0010 S&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-39&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;80)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>3501F0010 S</a>
+		</li>
+			<li class="entry ">
+						<a href="?newdid=67924&amp;uid=893"
+								class=""
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;4402F0161 A&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-47&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;73)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>4402F0161 A</a>
+		</li>
+			<li class="entry ">
+						<a href="?newdid=75144&amp;uid=893"
+								class=""
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;4504F0361 E&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-39&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;75)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>4504F0361 E</a>
+		</li>
+			<li class="entry ">
+						<a href="?newdid=71158&amp;uid=893"
+								class=""
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;4603F0262 O&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-34&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;72)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>4603F0262 O</a>
+		</li>
+			<li class="entry ">
+						<a href="?newdid=65538&amp;uid=893"
+								class=""
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;5308C0061 Q&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-48&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;69)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>5308C0061 Q</a>
+		</li>
+			<li class="entry  attack">
+							<img
+					src="img/x.gif"
+					class="attackIcon"
+					title="Ataques chegando neste aldeia: 1"
+				/>
+						<a href="?newdid=76267&amp;uid=893"
+								class=" attackVillageName"
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;5409C0161 G&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-46&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;69)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>5409C0161 G</a>
+		</li>
+			<li class="entry ">
+						<a href="?newdid=43968&amp;uid=893"
+								class=""
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;5500B0060 F&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-40&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;69)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>5500B0060 F</a>
+		</li>
+			<li class="entry ">
+						<a href="?newdid=77007&amp;uid=893"
+				accesskey="b"				class=""
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;6405F0470 V&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-45&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;63)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>6405F0470 V</a>
+		</li>
+			<li class="entry active ">
+						<a href="?newdid=78554&amp;uid=893"
+								class="active"
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;6406F0510 Q&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-46&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;63)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>6406F0510 Q</a>
+		</li>
+			<li class="entry ">
+						<a href="?newdid=70346&amp;uid=893"
+				accesskey="n"				class=""
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;7411C0561&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-45&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;58)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>7411C0561</a>
+		</li>
+			<li class="entry ">
+						<a href="?newdid=65498&amp;uid=893"
+								class=""
+				title="&lt;span class=&quot;coordinates coordinatesWithText&quot;&gt;&lt;span class=&quot;coordText&quot;&gt;8410C0762 O&lt;/span&gt;&lt;span class=&quot;coordinatesWrapper&quot;&gt;&lt;span class=&quot;coordinateX&quot;&gt;(-47&lt;/span&gt;&lt;span class=&quot;coordinatePipe&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;coordinateY&quot;&gt;56)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;clear&quot;&gt;&lrm;&lt;/span&gt;"
+			>8410C0762 O</a>
+		</li>
+		</ul>
+</div>
+<div class="foot">
+</div></div>
+		<div id="linkList" class="listing">
+	<div class="head">
+	<a href="spieler.php?s=2" accesskey="L" title="Editar links.">Links</a>
+</div>
+<div class="list">
+	<ul>
+			<li class="entry">
+			<a href="http://tx3.travian.com.br/build.php?newdid=59519&amp;id=23&amp;gid=19"  title="Quartel S. Brás">Quartel S. Brás</a>
+		</li>
+			<li class="entry">
+			<a href="http://tx3.travian.com.br/build.php?newdid=59519&amp;id=25&amp;gid=20"  title="Cavalariça S. Brás">Cavalariça S. Brás</a>
+		</li>
+			<li class="entry">
+			<a href="http://tx3.travian.com.br/build.php?t=5&amp;gid=17"  title="Enviar Recursos">Enviar Recursos</a>
+		</li>
+			<li class="entry">
+			<a href="http://tx3.travian.com.br/build.php?tt=2&amp;gid=16"  title="Enviar Tropa">Enviar Tropa</a>
+		</li>
+			<li class="entry">
+			<a href="http://tx3.travian.com.br/build.php?tt=99&amp;gid=16"  title="Lista de Farms">Lista de Farms</a>
+		</li>
+			<li class="entry">
+			<a href="http://tx3.travian.com.br/build.php?s=2&amp;id=21"  title="Pontos de Cultura">Pontos de Cultura</a>
+		</li>
+			<li class="entry">
+			<a href="http://tx3.travian.com.br/statistiken.php?id=4"  title="Gráficos Plus">Gráficos Plus</a>
+		</li>
+			<li class="entry">
+			<a href="http://t4.answers.travian.org/index.php?view=toolkit&amp;action=troopsoverview&amp;blevel=28&amp;unwrapped"  title="Tropas">Tropas</a>
+		</li>
+			<li class="entry">
+			<a href="http://answers.travian.org/?view=toolkit&amp;action=building&amp;speed=3&amp;gid=17&amp;unwrapped"  title="Edificios">Edificios</a>
+		</li>
+		</ul>
+	<div class="pager">
+		<a href="#" class="back" title="página anterior"></a>
+		<a href="#" class="next" title="próxima página"></a>
+	</div>
+</div>
+
+<script type="text/javascript">
+	new Travian.Game.PageScroller(
+	{
+		elementPrev: $('linkList').down('a.back'),
+		elementNext: $('linkList').down('a.next'),
+		elementList: $('linkList').down('div.list'),
+		elementBackground: $('linkList').down('div.list')
+	});
+</script></div>
+
+	</div>					<div class="clear"></div>
+				</div>
+				<div id="footer">
+					<div id="mfoot">
+						<a href="http://www.travian.com.br/" target="_blank">Página Inicial</a>
+						<a href="http://forum.travian.com.br" target="_blank">Fórum</a>
+						<a href="http://www.travian.com.br/links.php" target="_blank">Links</a>
+						<a href="http://t4.answers.travian.com.br/" target="_blank">FAQ - Respostas</a>
+						<a href="http://www.travian.com.br/agb.php" target="_blank">Termos e condições de uso</a>
+						<a href="http://www.travian.com.br/impressum.php" target="_blank">Impressão</a>
+						<div class="clear"></div>
+											</div>
+                    <p class="copyright">© 2004 - 2012 Travian Games GmbH</p>
+				</div>
+													<div id="stime" class="stime">
+	<div class="content-background-l">&nbsp;</div>
+	<div class="content-background-r">&nbsp;</div>
+	<div class="content day" title="dia">
+		<span class="icn">Tempo do servidor:</span>&nbsp;
+		<span id="tp1">16:49:31</span><span> </span>    </div>
+</div>					<div id="plusLink">
+	<div id="gs">
+		<p class="gold">
+			<a href="plus.php?id=3" title="Ouro"><img src="img/x.gif" alt="Ouro" class="gold" /><br />572</a>
+		</p>
+		<p class="silver">
+			<a href="hero_auction.php" title="Leilões"><img src="img/x.gif" alt="Prata" class="silver" /><br />463</a>
+		</p>
+		<div class="clear"></div>
+	</div>
+    <div id="plus">
+    	<a href="plus.php" class="plusBtn" title="Travian Plus"><span class="plusBtn-l"><span class="plus_g">P</span><span class="plus_o">l</span>
+<span class="plus_g">u</span><span class="plus_o">s</span></span><span class="plusBtn-r">&nbsp;</span></a>
+    </div>
+</div>
+<div class="clear"></div>					<ul id="res">
+		<li class="r1" title="Madeira||Produção: 679">
+		<p>
+        	<img src="img/x.gif" alt="Madeira"/>
+			<span id="l1" class="value ">35533/66400</span>
+		</p>
+				<div class="bar-bg">
+	        <div id="lbar1" class="bar" style="width:54%; background-color: #006900"></div>
+	        <div class="clear"></div>
+        </div>
+        	</li>
+		<li class="r2" title="Barro||Produção: 375">
+		<p>
+        	<img src="img/x.gif" alt="Barro"/>
+			<span id="l2" class="value ">6317/66400</span>
+		</p>
+				<div class="bar-bg">
+	        <div id="lbar2" class="bar" style="width:10%; background-color: #006900"></div>
+	        <div class="clear"></div>
+        </div>
+        	</li>
+		<li class="r3" title="Ferro||Produção: 263">
+		<p>
+        	<img src="img/x.gif" alt="Ferro"/>
+			<span id="l3" class="value ">6658/66400</span>
+		</p>
+				<div class="bar-bg">
+	        <div id="lbar3" class="bar" style="width:10%; background-color: #006900"></div>
+	        <div class="clear"></div>
+        </div>
+        	</li>
+		<li class="r4" title="Cereal||Produção: 3891">
+		<p>
+        	<img src="img/x.gif" alt="Cereal"/>
+			<span id="l4" class="value ">46163/111300</span>
+		</p>
+				<div class="bar-bg">
+	        <div id="lbar4" class="bar" style="width:41%; background-color: #006900"></div>
+	        <div class="clear"></div>
+        </div>
+        	</li>
+		<li class="r5" title="Cereal livre||Cereal livre / Produção">
+		<p>
+        	<img src="img/x.gif" alt="Consumo de cereal"/>
+			<span id="l5" class="value ">10243</span>
+		</p>
+			</li>
+	</ul>
+<div class="clear"></div>
+
+<script type="text/javascript">
+	resources.production = {
+					'l1': 679,					'l2': 375,					'l3': 263,					'l4': 3891			};
+</script>					<div id="villageName">
+	<div class="clickable" ondblclick="Travian.Game.showEditVillageDialog('Mudar nome da aldeia.', 'Novo nome da aldeia:', 'salvar',78554);" title="Duplo click para mudar o nome de sua vila." >
+		<span id="villageNameField">6406F0510 Q</span><br/>
+		<span class="loyalty high">
+			Lealdade: 100%
+		</span>
+	</div>
+</div>
+																		<div id="anwersQuestionMark">
+	<a href="http://t4.answers.travian.com.br/index.php?aid=123#go2answer" target="_blank" title="Travian Answers">&nbsp;</a>
+</div>			</div>
+
+			<div id="ce"></div>
+								</div>
+
+		
+		
+			</body>
+</html>

@@ -30,14 +30,15 @@ module Travian
       end
     end
 
-    def user(uid=user_uid)
-      User.parse_profile(uid, get(:profile, nil, :uid => uid))
+    def user(uid=uid)
+      User.parse(uid)
     end
 
-    def user_uid
-      get(:villages).search('a[href^="spieler.php"]').first['href'].match(/spieler.php\?uid=(\d+)/)
-      $1.to_i
+    def uid
+      User.uid
     end
+
+    alias :user_id :uid
 
     def villages_by_name(query)
       villages.select {|v| v.name.match(/.*#{query.to_s}.*/i) }

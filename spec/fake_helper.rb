@@ -99,3 +99,39 @@ def fake_rally_point_no_attacks
     :content_type => "text/html"
   )
 end
+
+def fake_user_profile
+  FakeWeb.register_uri(
+    :get,
+    "http://tx3.travian.com.br/spieler.php?uid=8964",
+    :body => "./spec/fakeweb_pages/brx_spieler_uid_8964.html",
+    :content_type => "text/html"
+  )
+end
+
+def fake_alliance_profile
+  FakeWeb.register_uri(
+    :get,
+    "http://tx3.travian.com.br/allianz.php?aid=33",
+    :body => "./spec/fakeweb_pages/brx_allianz_aid_33.html",
+    :content_type => "text/html"
+  )
+end
+
+def fake_invalid_user_profile
+  FakeWeb.register_uri(
+    :get,
+    "http://tx3.travian.com.br/spieler.php?uid=893",
+    :body => "./spec/fakeweb_pages/brx_spieler_uid_893_no_user.html",
+    :content_type => "text/html"
+  )
+end
+
+def fake_user_profile_without_alliance
+  FakeWeb.register_uri(
+    :get,
+    "http://tx3.travian.com.br/spieler.php?uid=14142",
+    :body => "./spec/fakeweb_pages/brx_spieler_uid_14142_no_alliance.html",
+    :content_type => "text/html"
+  )
+end
