@@ -1,4 +1,5 @@
 require 'mechanize'
+require 'uri'
 require 'travian/configurable'
 require 'travian/api'
 require 'travian/base_building'
@@ -11,6 +12,8 @@ module Travian
     include Configurable
     include API
 
+    ANSWERS = URI.parse('http://t4.answers.travian.org/index.php')
+
     LINK_TO = {
       :root       => '/',
       :resources  => '/dorf1.php',
@@ -21,7 +24,8 @@ module Travian
       :map        => '/karte.php',
       :villages   => '/dorf3.php',
       :building   => '/build.php',
-      :profile    => '/spieler.php',
+      :user       => '/spieler.php',
+      :alliance   => '/allianz.php',
     }
 
     attr_reader :start_village
@@ -33,6 +37,22 @@ module Travian
       end
       raise InvalidConfigurationError, "Invalid user or password" unless configured? and login
       @start_village = @agent.current_page.search('ul#villageListLinks a.active').first.text
+    end
+
+    def answers(object, opts={})
+      options = { view: 'toolkit' }
+      case object
+      when BaseBuilding
+        options[:action] = 'building'
+        options[:gid] = object.gid
+      when Unit
+        options[:action] = 'troopsoverview'
+      end
+      options[:speed] = 3
+      options[:unwrapped] = ''
+      uri = ANSWERS.clone
+      uri.query = URI.encode_www_form(options)
+      get(uri.to_s)
     end
 
     def get(page, village=nil, params={})
@@ -55,8 +75,7 @@ module Travian
       url = LINK_TO[page]
       url += "?newdid=#{object.id}" if object
       if params.size > 0
-        url += "&" if object
-        url += "?" unless object
+        object ? url += "&" : url += "?"
       end
       url += params.each_pair.map do |k,v|
         k == :gid ? "#{k}=#{BaseBuilding.gid_for(v)}" : "#{k}=#{v}"
