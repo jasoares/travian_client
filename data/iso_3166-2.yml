@@ -1,0 +1,728 @@
+af:
+  name: Afghanistan
+
+al:
+  name: Albania
+
+dz:
+  name: Algeria
+
+as:
+  name: American Samoa
+
+ad:
+  name: Andorra
+
+ao:
+  name: Angola
+
+ai:
+  name: Anguilla
+
+aq:
+  name: Antarctica
+
+ag:
+  name: Antigua And Barbuda
+
+ar:
+  name: Argentina
+
+am:
+  name: Armenia
+
+aw:
+  name: Aruba
+
+au:
+  name: Australia
+
+at:
+  name: Austria
+
+az:
+  name: Azerbaijan
+
+bs:
+  name: Bahamas
+
+bh:
+  name: Bahrain
+
+bd:
+  name: Bangladesh
+
+bb:
+  name: Barbados
+
+by:
+  name: Belarus
+
+be:
+  name: Belgium
+
+bz:
+  name: Belize
+
+bj:
+  name: Benin
+
+bm:
+  name: Bermuda
+
+bt:
+  name: Bhutan
+
+bo:
+  name: Bolivia
+
+ba:
+  name: Bosnia And Herzegovina
+
+bw:
+  name: Botswana
+
+bv:
+  name: Bouvet Island
+
+br:
+  name: Brazil
+
+io:
+  name: British Indian Ocean Territory
+
+bn:
+  name: Brunei Darussalam
+
+bg:
+  name: Bulgaria
+
+bf:
+  name: Burkina Faso
+
+bi:
+  name: Burundi
+
+kh:
+  name: Cambodia
+
+cm:
+  name: Cameroon
+
+ca:
+  name: Canada
+
+cv:
+  name: Cape Verde
+
+ky:
+  name: Cayman Islands
+
+cf:
+  name: Central African Republic
+
+td:
+  name: Chad
+
+cl:
+  name: Chile
+
+cn:
+  name: China
+
+cx:
+  name: Christmas Island
+
+cc:
+  name: Cocos (keeling) Islands
+
+co:
+  name: Colombia
+
+km:
+  name: Comoros
+
+cg:
+  name: Congo
+
+cd:
+  name: Congo, The Democratic Republic Of The
+
+ck:
+  name: Cook Islands
+
+cr:
+  name: Costa Rica
+
+ci:
+  name: Cote D'ivoire
+
+hr:
+  name: Croatia
+
+cu:
+  name: Cuba
+
+cy:
+  name: Cyprus
+
+cz:
+  name: Czech Republic
+
+dk:
+  name: Denmark
+
+dj:
+  name: Djibouti
+
+dm:
+  name: Dominica
+
+do:
+  name: Dominican Republic
+
+tp:
+  name: East Timor
+
+ec:
+  name: Ecuador
+
+eg:
+  name: Egypt
+
+sv:
+  name: El Salvador
+
+gq:
+  name: Equatorial Guinea
+
+er:
+  name: Eritrea
+
+ee:
+  name: Estonia
+
+et:
+  name: Ethiopia
+
+fk:
+  name: Falkland Islands (malvinas)
+
+fo:
+  name: Faroe Islands
+
+fj:
+  name: Fiji
+
+fi:
+  name: Finland
+
+fr:
+  name: France
+
+gf:
+  name: French Guiana
+
+pf:
+  name: French Polynesia
+
+tf:
+  name: French Southern Territories
+
+ga:
+  name: Gabon
+
+gm:
+  name: Gambia
+
+ge:
+  name: Georgia
+
+de:
+  name: Germany
+
+gh:
+  name: Ghana
+
+gi:
+  name: Gibraltar
+
+gr:
+  name: Greece
+
+gl:
+  name: Greenland
+
+gd:
+  name: Grenada
+
+gp:
+  name: Guadeloupe
+
+gu:
+  name: Guam
+
+gt:
+  name: Guatemala
+
+gn:
+  name: Guinea
+
+gw:
+  name: Guinea-bissau
+
+gy:
+  name: Guyana
+
+ht:
+  name: Haiti
+
+hm:
+  name: Heard Island And Mcdonald Islands
+
+va:
+  name: Holy See (vatican City State)
+
+hn:
+  name: Honduras
+
+hk:
+  name: Hong Kong
+
+hu:
+  name: Hungary
+
+is:
+  name: Iceland
+
+in:
+  name: India
+
+ine:
+  name: India
+
+id:
+  name: Indonesia
+
+ir:
+  name: Iran, Islamic Republic Of
+
+iq:
+  name: Iraq
+
+ie:
+  name: Ireland
+
+il:
+  name: Israel
+
+it:
+  name: Italy
+
+jm:
+  name: Jamaica
+
+jp:
+  name: Japan
+
+jo:
+  name: Jordan
+
+kz:
+  name: Kazakstan
+
+ke:
+  name: Kenya
+
+ki:
+  name: Kiribati
+
+kp:
+  name: Korea, Democratic People's Republic Of
+
+kr:
+  name: Korea, Republic Of
+
+kv:
+  name: Kosovo
+
+kw:
+  name: Kuwait
+
+kg:
+  name: Kyrgyzstan
+
+la:
+  name: Lao People's Democratic Republic
+
+lv:
+  name: Latvia
+
+lb:
+  name: Lebanon
+
+ls:
+  name: Lesotho
+
+lr:
+  name: Liberia
+
+ly:
+  name: Libyan Arab Jamahiriya
+
+li:
+  name: Liechtenstein
+
+lt:
+  name: Lithuania
+
+lu:
+  name: Luxembourg
+
+mo:
+  name: Macau
+
+mk:
+  name: Macedonia, The Former Yugoslav Republic Of
+
+mg:
+  name: Madagascar
+
+mw:
+  name: Malawi
+
+my:
+  name: Malaysia
+
+mv:
+  name: Maldives
+
+ml:
+  name: Mali
+
+mt:
+  name: Malta
+
+mh:
+  name: Marshall Islands
+
+mq:
+  name: Martinique
+
+mr:
+  name: Mauritania
+
+mu:
+  name: Mauritius
+
+yt:
+  name: Mayotte
+
+mx:
+  name: Mexico
+
+fm:
+  name: Micronesia, Federated States Of
+
+md:
+  name: Moldova, Republic Of
+
+mc:
+  name: Monaco
+
+mn:
+  name: Mongolia
+
+ms:
+  name: Montserrat
+
+me:
+  name: Montenegro
+
+ma:
+  name: Morocco
+
+mz:
+  name: Mozambique
+
+mm:
+  name: Myanmar
+
+na:
+  name: Namibia
+
+nr:
+  name: Nauru
+
+np:
+  name: Nepal
+
+nl:
+  name: Netherlands
+
+an:
+  name: Netherlands Antilles
+
+nc:
+  name: New Caledonia
+
+nz:
+  name: New Zealand
+
+ni:
+  name: Nicaragua
+
+ne:
+  name: Niger
+
+ng:
+  name: Nigeria
+
+nu:
+  name: Niue
+
+nf:
+  name: Norfolk Island
+
+mp:
+  name: Northern Mariana Islands
+
+no:
+  name: Norway
+
+om:
+  name: Oman
+
+pk:
+  name: Pakistan
+
+pw:
+  name: Palau
+
+ps:
+  name: Palestinian Territory, Occupied
+
+pa:
+  name: Panama
+
+pg:
+  name: Papua New Guinea
+
+py:
+  name: Paraguay
+
+pe:
+  name: Peru
+
+ph:
+  name: Philippines
+
+pn:
+  name: Pitcairn
+
+pl:
+  name: Poland
+
+pt:
+  name: Portugal
+
+pr:
+  name: Puerto Rico
+
+qa:
+  name: Qatar
+
+re:
+  name: Reunion
+
+ro:
+  name: Romania
+
+ru:
+  name: Russian Federation
+
+rw:
+  name: Rwanda
+
+sh:
+  name: Saint Helena
+
+kn:
+  name: Saint Kitts And Nevis
+
+lc:
+  name: Saint Lucia
+
+pm:
+  name: Saint Pierre And Miquelon
+
+vc:
+  name: Saint Vincent And The Grenadines
+
+ws:
+  name: Samoa
+
+sm:
+  name: San Marino
+
+st:
+  name: Sao Tome And Principe
+
+sa:
+  name: Saudi Arabia
+
+sn:
+  name: Senegal
+
+rs:
+  name: Serbia
+
+sc:
+  name: Seychelles
+
+sl:
+  name: Sierra Leone
+
+sg:
+  name: Singapore
+
+sk:
+  name: Slovakia
+
+si:
+  name: Slovenia
+
+sb:
+  name: Solomon Islands
+
+so:
+  name: Somalia
+
+za:
+  name: South Africa
+
+gs:
+  name: South Georgia And The South Sandwich Islands
+
+es:
+  name: Spain
+
+lk:
+  name: Sri Lanka
+
+sd:
+  name: Sudan
+
+sr:
+  name: Suriname
+
+sj:
+  name: Svalbard And Jan Mayen
+
+sz:
+  name: Swaziland
+
+se:
+  name: Sweden
+
+ch:
+  name: Switzerland
+
+sy:
+  name: Syrian Arab Republic
+
+tw:
+  name: Taiwan, Province Of China
+
+tj:
+  name: Tajikistan
+
+tz:
+  name: Tanzania, United Republic Of
+
+th:
+  name: Thailand
+
+tg:
+  name: Togo
+
+tk:
+  name: Tokelau
+
+to:
+  name: Tonga
+
+tt:
+  name: Trinidad And Tobago
+
+tn:
+  name: Tunisia
+
+tr:
+  name: Turkey
+
+tm:
+  name: Turkmenistan
+
+tc:
+  name: Turks And Caicos Islands
+
+tv:
+  name: Tuvalu
+
+ug:
+  name: Uganda
+
+ua:
+  name: Ukraine
+
+ae:
+  name: United Arab Emirates
+
+gb:
+  name: United Kingdom
+
+uk:
+  name: United Kingdom
+
+us:
+  name: United States
+
+um:
+  name: United States Minor Outlying Islands
+
+uy:
+  name: Uruguay
+
+uz:
+  name: Uzbekistan
+
+vu:
+  name: Vanuatu
+
+ve:
+  name: Venezuela
+
+vn:
+  name: Viet Nam
+
+vg:
+  name: Virgin Islands, British
+
+vi:
+  name: Virgin Islands, U.s.
+
+wf:
+  name: Wallis And Futuna
+
+eh:
+  name: Western Sahara
+
+ye:
+  name: Yemen
+
+zm:
+  name: Zambia
+
+zw:
+  name: Zimbabwe

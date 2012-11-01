@@ -135,3 +135,12 @@ def fake_user_profile_without_alliance
     :content_type => "text/html"
   )
 end
+
+def fake_status_page
+  FakeWeb.register_uri(
+    :get,
+    "http://status.travian.com",
+    :body => "./spec/fakeweb_pages/status_travian_com.html",
+    :content_type => "text/html"
+  )
+end

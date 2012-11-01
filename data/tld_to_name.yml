@@ -1,0 +1,163 @@
+---
+ae:
+  country: United Arab Emirates
+  language: ar
+au:
+  country: Australia
+  language: au
+ba:
+  country: Bosnia And Herzegovina
+  language: bs
+bg:
+  country: Bulgaria
+  language: bg
+br:
+  country: Brazil
+  language: pt
+cl:
+  country: Chile
+  language: es
+cn:
+  country: China
+  language: cn
+cz:
+  country: Czech Republic
+  language: cz
+de:
+  country: Germany
+  language: de
+dk:
+  country: Denmark
+  language: dk
+ee:
+  country: Estonia
+  language: ee
+eg:
+  country: Egypt
+  language: ar
+com:
+  country: International
+  language: en
+es:
+  country: Spain
+  language: es
+fi:
+  country: Finland
+  language: fi
+fr:
+  country: France
+  language: fr
+gq:
+  country: Travian Team
+  language: en
+gr:
+  country: Greece
+  language: gr
+hk:
+  country: Hong Kong
+  language: 
+hr:
+  country: Croatia
+  language: 
+hu:
+  country: Hungary
+  language: 
+id:
+  country: Indonesia
+  language: 
+il:
+  country: Israel
+  language: 
+in:
+  country: India
+  language: in
+ine:
+  country: India
+  language: in
+ir:
+  country: Iran, Islamic Republic Of
+  language: ir
+it:
+  country: Italy
+  language: it
+jp:
+  country: Japan
+  language: jp
+lt:
+  country: Lithuania
+  language: lt
+lv:
+  country: Latvia
+  language: lv
+ma:
+  country: Morocco
+  language: fr
+my:
+  country: Malaysia
+  language: my
+nl:
+  country: Netherlands
+  language: nl
+no:
+  country: Norway
+  language: no
+ph:
+  country: Philippines
+  language: ph
+pk:
+  country: Pakistan
+  language: en
+pl:
+  country: Poland
+  language: 
+pt:
+  country: Portugal
+  language: pt
+ro:
+  country: Romania
+  language: 
+rs:
+  country: Serbia
+  language: 
+ru:
+  country: Russian Federation
+  language: 
+sa:
+  country: Saudi Arabia
+  language: ar
+se:
+  country: Sweden
+  language: 
+si:
+  country: Slovenia
+  language: 
+sk:
+  country: Slovakia
+  language: 
+arabia:
+  country: 
+  language: 
+th:
+  country: Thailand
+  language: 
+tr:
+  country: Turkey
+  language: 
+tw:
+  country: Taiwan, Province Of China
+  language: 
+ua:
+  country: Ukraine
+  language: 
+uk:
+  country: United Kingdom
+  language: 
+us:
+  country: United States
+  language: 
+vn:
+  country: Viet Nam
+  language: 
+za:
+  country: South Africa
+  language: 

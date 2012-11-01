@@ -1,0 +1,307 @@
+---
+ae:
+  romans: الرومان
+  teutons: الجرمان
+  gauls: الإغريق
+  nature: الطبيعة
+  natars: النتار
+com.au:
+  romans: Romans
+  teutons: Teutons
+  gauls: Gauls
+  nature: Nature
+  natars: Natars
+ba:
+  romans: Rimljani
+  teutons: Teutonci
+  gauls: Gali
+  nature: Priroda
+  natars: Natari
+bg:
+  romans: Римляни
+  teutons: Тевтонци
+  gauls: Гали
+  nature: Природа
+  natars: Натари
+com.br:
+  romans: Romanos
+  teutons: Teutões
+  gauls: Gauleses
+  nature: Natureza
+  natars: Natars
+cl:
+  romans: Romanos
+  teutons: Germanos
+  gauls: Galos
+  nature: Naturaleza
+  natars: Natares
+cc:
+  romans: 罗马
+  teutons: 日耳曼
+  gauls: 高卢
+  nature: 自然界
+  natars: 纳塔军
+cz:
+  romans: Římské
+  teutons: Germánské
+  gauls: Galské
+  nature: Příroda
+  natars: Natarské
+de:
+  romans: Römer
+  teutons: Germanen
+  gauls: Gallier
+  nature: Natur
+  natars: Nataren
+dk:
+  romans: Romere
+  teutons: Germanere
+  gauls: Gallere
+  nature: Natur
+  natars: Natarer
+co.ee:
+  romans: Roomlased
+  teutons: Teutoonid
+  gauls: Keldid
+  nature: Loodus
+  natars: Natarid
+com.eg:
+  romans: الرومان
+  teutons: الجرمان
+  gauls: الإغريق
+  nature: الطبيعة
+  natars: النتار
+com:
+  romans: Romans
+  teutons: Teutons
+  gauls: Gauls
+  nature: Nature
+  natars: Natars
+net:
+  romans: Romanos
+  teutons: Germanos
+  gauls: Galos
+  nature: Naturaleza
+  natars: Natares
+fi:
+  romans: Roomalaiset
+  teutons: Teutonit
+  gauls: Gallialaiset
+  nature: Luonto
+  natars: Nataarit
+fr:
+  romans: Romains
+  teutons: Germains
+  gauls: Gaulois
+  nature: Nature
+  natars: Natars
+gr:
+  romans: Ρωμαίοι
+  teutons: Τεύτονες
+  gauls: Γαλάτες
+  nature: Φύση
+  natars: Νατάριοι
+hk:
+  romans: 羅馬人
+  teutons: 條頓人
+  gauls: 高盧人
+  nature: 自然界
+  natars: 賴達族
+com.hr:
+  romans: Rimljani
+  teutons: Teutonci
+  gauls: Gali
+  nature: Priroda
+  natars: Natari
+hu:
+  romans: Római
+  teutons: Germán
+  gauls: Gall
+  nature: Természet
+  natars: Natar
+co.id:
+  romans: Romawi
+  teutons: Teuton
+  gauls: Galia
+  nature: Alam
+  natars: Natars
+co.il:
+  romans: הרומאים
+  teutons: הטאוטונים
+  gauls: הגאלים
+  nature: הטבע
+  natars: הנטארים
+in:
+  romans: Romans
+  teutons: Teutons
+  gauls: Gauls
+  nature: Nature
+  natars: Natars
+ir:
+  romans: رومی‌ها
+  teutons: توتن‌ها
+  gauls: گول‌ها
+  nature: طبیعت
+  natars: ناتارها
+it:
+  romans: Romani
+  teutons: Teutoni
+  gauls: Galli
+  nature: Natura
+  natars: Natars
+jp:
+  romans: ローマン
+  teutons: チュートン
+  gauls: ガウル
+  nature: 自然
+  natars: ナタール
+lt:
+  romans: romėnai
+  teutons: germanai
+  gauls: galai
+  nature: Laukiniai gyvūnai
+  natars: natarai
+lv:
+  romans: Romieši
+  teutons: Ģermāņi
+  gauls: Galli
+  nature: Daba
+  natars: Natāri
+ma:
+  romans: Romains
+  teutons: Germains
+  gauls: Gaulois
+  nature: Nature
+  natars: Natars
+com.my:
+  romans: Rom
+  teutons: Teuton
+  gauls: Gaul
+  nature: Alam
+  natars: Natar
+nl:
+  romans: Romeinen
+  teutons: Germanen
+  gauls: Galliërs
+  nature: Natuur
+  natars: Natars
+no:
+  romans: Romere
+  teutons: Germanere
+  gauls: Gallere
+  nature: Natur
+  natars: Natarene
+ph:
+  romans: Mga Romano
+  teutons: Mga Teutono
+  gauls: Mga Gaul
+  nature: Kalikasan
+  natars: Mga Natar
+pk:
+  romans: Romans
+  teutons: Teutons
+  gauls: Gauls
+  nature: Nature
+  natars: Natars
+pl:
+  romans: Rzymianie
+  teutons: Germanie
+  gauls: Galowie
+  nature: Zwierzęta
+  natars: Natarzy
+pt:
+  romans: Romanos
+  teutons: Teutões
+  gauls: Gauleses
+  nature: Natureza
+  natars: Natarianos
+ro:
+  romans: Romani
+  teutons: Barbari
+  gauls: Daci
+  nature: Natura
+  natars: Natari
+rs:
+  romans: Римљани
+  teutons: Тевтонци
+  gauls: Гали
+  nature: Природа
+  natars: Натари
+ru:
+  romans: Римляне
+  teutons: Германцы
+  gauls: Галлы
+  nature: Дикие животные
+  natars: Натары
+com.sa:
+  romans: الرومان
+  teutons: الجرمان
+  gauls: الإغريق
+  nature: الطبيعة
+  natars: النتار
+se:
+  romans: Romare
+  teutons: Germaner
+  gauls: Galler
+  nature: Natur
+  natars: Natarer
+si:
+  romans: Rimljan
+  teutons: Tevton
+  gauls: Galec
+  nature: Narava
+  natars: Natarji
+sk:
+  romans: Rimania
+  teutons: Germáni
+  gauls: Galovia
+  nature: Príroda
+  natars: Natari
+asia:
+  romans: โรมัน
+  teutons: ทูทั่น
+  gauls: กอล
+  nature: เนเชอร์
+  natars: นาทาร์
+com.tr:
+  romans: Romalılar
+  teutons: Cermenler
+  gauls: Galyalılar
+  nature: Doğa
+  natars: Natarlar
+tw:
+  romans: 羅馬人
+  teutons: 條頓人
+  gauls: 高盧人
+  nature: 自然界
+  natars: 賴達族
+com.ua:
+  romans: Римляни
+  teutons: Тевтонці
+  gauls: Галли
+  nature: Природа
+  natars: Натари
+co.uk:
+  romans: Romans
+  teutons: Teutons
+  gauls: Gauls
+  nature: Nature
+  natars: Natars
+us:
+  romans: Romans
+  teutons: Teutons
+  gauls: Gauls
+  nature: Nature
+  natars: Natars
+com.vn:
+  romans: Romans
+  teutons: Teutons
+  gauls: Gauls
+  nature: Thú hoang
+  natars: Natars
+co.za:
+  romans: Romans
+  teutons: Teutons
+  gauls: Gauls
+  nature: Nature
+  natars: Natars
