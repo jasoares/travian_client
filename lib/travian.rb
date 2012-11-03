@@ -1,5 +1,6 @@
 require 'travian/configurable'
 require 'travian/client'
+require 'travian/server'
 
 module Travian
   class << self

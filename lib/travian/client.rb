@@ -62,6 +62,10 @@ module Travian
       @agent.get(page)
     end
 
+    def post(page)
+      @agent.post(page)
+    end
+
     def fetch(url={})
       agent.get url.is_a?(String) ? url : answers(url)
     end

@@ -1,33 +1,11 @@
 module Travian
   class Server
-    module Status
-      extend self
 
-      UP = 0
-      DOWN = 1
+    attr_reader :region, :country, :host, :players, :start
 
-      def [](id)
-        case id
-        when 0, true; UP
-        else DOWN
-        end
-      end
-
-    end
-
-    attr_reader :host, :status
-
-    def initialize(host, status)
-      @host, @status = host, status
-    end
-
-    def to_s
-      "#{host}(#{pretty_status})"
-      #"#<#{self.class}:0x#{self.__id__.to_s(16)} @host=\"#{host}\", @status=\"#{pretty_status}\">"
-    end
-
-    def pretty_status
-      status == 0 ? "UP" : "DOWN"
+    def initialize(region, country, host, players, start)
+      @region, @country = region, country
+      @host, @players, @start = host, players, start
     end
 
     class << self
@@ -36,33 +14,65 @@ module Travian
       SUBDOMAIN_REGEX = /\A(\w+)\.travian\.\w+(?:\.\w+)?\z/i
       SERVER_UP = %r{img/un/a/uparrow.gif}
 
-      @@servers = nil
+      @@cache = {}
 
-      def servers
-        unless @@servers
-          page = Travian.get('http://status.travian.com')
-          keys = page.search('div.hidden').map {|div| div['id'].to_sym }
-          @@servers = {}
-          keys.each do |key|
-            @@servers[key] = page.search("div##{key} td").map(&:text).select do |t|
-              t.match(SERVER_REGEX)
-            end.sort
-          end
-        end
-        @@servers
+      def regions
+        load_data[:regions]
       end
 
-      def list
+      def hubs(region=nil)
+        return load_data[]
+        regions.map {|region| load_data[:flag][:region] }
+      end
+
+      def login_available
+        country_hubs.inject(0) {|sum,hub| sum += Travian.post(hub + "serverLogin.php").search('div.name').size }
+      end
+
+      def register_available
+        country_hubs.inject(0) {|sum,hub| sum += Travian.post(hub + "register.php").search('div.name').size }
+      end
+
+      def full_travian_user_count
+        country_hubs.inject(0) do |sum,hub|
+          sum += Travian.post(hub + "serverLogin.php").search('div.player').inject(0) do |players,server_players|
+            server_players.text.match(/(\d+)/); players += $1.to_i
+            players
+          end
+          sum
+        end
+      end
+
+      def login_servers
+        region
+        country_hubs.inject([]) do |servers, hub|
+          servers += Travian.post(hub + "serverLogin.php").search('div[class~="server"]').inject([]) do |list, server_info|
+            players, start = server_info.search('div')[1..2].map {|div| div.text.gsub(/[^\d]/, '').to_i }
+            host = server_info.search('a.link').first['href']
+            list << Server.new(host, players, start, )
+          end
+        end
+      end
+
+      def country_hubs(region=nil)
+        return load_data[:flags].values.inject([]) {|mem,region| mem += region.values; mem } unless region
+        load_data[:flags][region.to_sym].values
+      end
+
+      def country_keys(region=nil)
+        return load_data[:flags].values.map(&:merge).keys unless region
+        load_data[:flags][region].keys
+      end
+
+      def domains
         page = Travian.get('http://status.travian.com')
         keys = page.search('div.hidden').map {|div| div['id'].to_sym }
-        keys.inject({}) do |h,k|
-          h[k] = page.search("div##{k.to_s} td[bgcolor]").each_slice(2).map do |status,host|
-            Server.new(
-              host.text,
-              status.search('img').first['src'].match(SERVER_UP) ? Status::UP : Status::DOWN
-            )
-          end; h
-        end
+        keys.map {|k| page.search("div##{k.to_s} td[bgcolor]")[1].text.gsub(/.+\.travian(?:team)?\./, '') }.uniq
+      end
+
+      def all_servers
+        country_hubs.map {|hub| hash[domain] = Travian.get("#{hub}serverList.php"); hash }
+        (spages.merge asia_page).map {|k,v| v.search}
       end
 
       def keys
@@ -85,6 +95,17 @@ module Travian
       end
 
       private
+
+      def load_data
+        page = Travian.get('http://www.travian.com')
+        page.search('div#country_select').text.gsub(/\n|\t/, '').match(/\(({container:[^\)]+).+/)
+        raw_data = jshash_to_rubyhash($1)
+      end
+
+      def jshash_to_rubyhash(str)
+        eval str.gsub(/,'/, ", ").gsub(/':/, ": ").gsub(/\{'/, "{ ")
+      end
+
 
       def subdomain(host)
         host.match(SUBDOMAIN_REGEX); $1
