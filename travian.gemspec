@@ -6,11 +6,11 @@ Gem::Specification.new do |gem|
   gem.email         = ["jsoaresgeral@gmail.com"]
   gem.description   = %q{Access Travian account status and interact with the game through mechanize}
   gem.summary       = %q{Travian mechanized access library}
-  gem.homepage      = ""
+  gem.homepage      = "http://github.com/jasoares/travian_client"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.test_files    = gem.files.grep(%r{^(spec)/})
   gem.name          = "travian"
   gem.require_paths = ["lib"]
   gem.version       = Travian::VERSION
@@ -22,7 +22,6 @@ Gem::Specification.new do |gem|
 
   # development
   gem.add_development_dependency 'rspec'
-  gem.add_development_dependency 'cucumber'
   gem.add_development_dependency 'fakeweb'
   gem.add_development_dependency 'timecop'
 end

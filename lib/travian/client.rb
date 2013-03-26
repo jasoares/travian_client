@@ -2,6 +2,10 @@ require 'mechanize'
 require 'uri'
 require 'travian/configurable'
 require 'travian/api'
+require 'travian/api/villages'
+require 'travian/api/users'
+require 'travian/api/attacks'
+require 'travian/api/resources'
 require 'travian/base_building'
 
 module Travian
@@ -11,6 +15,10 @@ module Travian
   class Client
     include Configurable
     include API
+    include API::Villages
+    include API::Users
+    include API::Attacks
+    include API::Resources
 
     ANSWERS = URI.parse('http://t4.answers.travian.org/index.php')
 
@@ -28,7 +36,7 @@ module Travian
       :alliance   => '/allianz.php',
     }
 
-    attr_reader :start_village
+    attr_reader :agent, :start_village
 
     def initialize(options)
       @agent = Mechanize.new
@@ -36,7 +44,7 @@ module Travian
         instance_variable_set(:"@#{key}", options[key])
       end
       raise InvalidConfigurationError, "Invalid user or password" unless configured? and login
-      @start_village = @agent.current_page.search('ul#villageListLinks a.active').first.text
+      @start_village = current_village
     end
 
     def answers(object, opts={})
@@ -64,11 +72,6 @@ module Travian
 
     def fetch(url={})
       agent.get url.is_a?(String) ? url : answers(url)
-    end
-
-    def reset_village
-      get(:resources, :village => village(@start_village))
-      @start_village
     end
 
     def url_for(page, object=nil, params={})

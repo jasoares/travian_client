@@ -4,10 +4,10 @@ require 'travian/village'
 require 'travian/resource'
 require 'travian/attack'
 require 'travian/user'
+require 'travian/building'
 
 module Travian
   module API
-    extend self
 
     v_types = YAML.load_file('data/t4_village_types.yml')
     v_types.each_pair do |type, desc|
@@ -23,55 +23,6 @@ module Travian
 
     V_TYPES = v_types
 
-    def villages
-      get(:villages).search('td.vil.fc a').map do |village|
-        id = $1.to_i if village['href'].match(/(\d+)\z/)
-        Village.new(village.text, id)
-      end
-    end
-
-    def user(uid=uid)
-      User.parse(uid)
-    end
-
-    def uid
-      User.uid
-    end
-
-    alias :user_id :uid
-
-    def villages_by_name(query)
-      villages.select {|v| v.name.match(/.*#{query.to_s}.*/i) }
-    end
-
-    def village(name)
-      villages_by_name(name).first
-    end
-
-    def incoming_attacks?
-      get(:villages).search('img.att1').any?
-    end
-
-    def attacks_to?(village)
-      village = village(village) if village.is_a? String
-      get(:villages).search('table#overview tr').find do |row|
-        row.search('td.vil.fc a').text == village.name
-      end.search('img.att1').any?
-    end
-
-    def attacks_to(village)
-      village = village(village) if village.is_a? String
-      page = get(:building, village, :gid => :rally_point, :tt => 1)
-      attacks = page.search('table.troop_details.inAttack')
-      raids = page.search('table.troop_details.inRaid')
-      (attacks + raids).map {|attack| Attack.parse_table(attack, village) }
-    end
-
-    def resources_in(v)
-      v = village(v) if v.is_a? String
-      Resource.new(*res_data(v).map {|i| i.first })
-    end
-
     def capacity_in(v)
       v = village(v) if v.is_a? String
       Resource.new(*res_data(v).map {|i| i.last })
@@ -83,12 +34,6 @@ module Travian
         *get(:resources, v).search('#production td.num').
         text.gsub(/[^\d]+/, ' ').match(/(\d+) (\d+) (\d+) (\d+)/).captures.map {|p| p.to_i }
       )
-    end
-
-    def type_of_village(v)
-      v = village(v) if v.is_a? String
-      get(:resources, v).search('div#village_map').first['class'].match(/f(\d+)/)
-      $1.to_i
     end
 
     def village_types
@@ -123,14 +68,6 @@ module Travian
     def lvls_of(v)
       v = village(v) if v.is_a? String
       get(:center, v).search('div#levels div[class^="aid"]').map(&:text).map(&:to_i)
-    end
-
-    private
-
-    def res_data(v)
-      get(:resources, v).search(".value").map do |r|
-        r.text.split('/').map {|s| s.to_i }
-      end.first(4)
     end
   end
 end

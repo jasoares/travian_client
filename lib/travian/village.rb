@@ -53,10 +53,6 @@ module Travian
 
     class << self
 
-      def by_name(query)
-        villages.select {|v| v.name.match(/.*#{query.to_s}.*/i) }
-      end
-
       def resources_in(v)
         v = village(v) if v.is_a? String
         Resource.new(*res_data(v).map {|i| i.first })
