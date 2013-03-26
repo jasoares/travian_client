@@ -19,9 +19,13 @@ Gem::Specification.new do |gem|
   
   # runtime
   gem.add_runtime_dependency 'mechanize'
+  gem.add_runtime_dependency 'active_support'
 
   # development
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'fakeweb'
   gem.add_development_dependency 'timecop'
+  gem.add_development_dependency 'guard'
+  gem.add_development_dependency 'guard-rspec'
+  gem.add_development_dependency 'rb-inotify'
 end

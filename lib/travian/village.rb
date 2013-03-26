@@ -1,9 +1,13 @@
+require 'yaml'
 require 'travian/timespan'
 require 'travian/resource'
 require 'travian/client'
+require 'travian/village_type'
 
 module Travian
   class Village
+
+    TYPES = YAML.load_file('data/t4_village_types.yml')
 
     attr_reader :name, :id
 
@@ -53,31 +57,9 @@ module Travian
 
     class << self
 
-      def resources_in(v)
-        v = village(v) if v.is_a? String
-        Resource.new(*res_data(v).map {|i| i.first })
+      def types
       end
 
-      def capacity_in(v)
-        v = village(v) if v.is_a? String
-        Resource.new(*res_data(v).map {|i| i.last })
-      end
-
-      def production_in(v)
-        v = village(v) if v.is_a? String
-        Resource.new(
-          *Travian.get(:resources, v).search('#production td.num').
-          text.gsub(/[^\d]+/, ' ').match(/(\d+) (\d+) (\d+) (\d+)/).captures.map {|p| p.to_i }
-        )
-      end
-
-      private
-
-      def res_data(v)
-        Travian.get(:resources, v).search(".value").map do |r|
-          r.text.split('/').map {|s| s.to_i }
-        end.first(4)
-      end
     end
   end
 end

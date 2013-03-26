@@ -1,6 +1,7 @@
 require 'mechanize'
 require 'uri'
 require 'travian/configurable'
+require 'travian/parser/view'
 require 'travian/api'
 require 'travian/api/villages'
 require 'travian/api/users'
