@@ -40,7 +40,7 @@ module Travian
     end
 
     def full_in
-      Timespan.float_hours(remaining_capacity./(production, true))
+      Timespan.float_hours(remaining_capacity / production)
     end
 
     def ==(other)
