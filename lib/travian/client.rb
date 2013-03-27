@@ -2,12 +2,13 @@ require 'mechanize'
 require 'uri'
 require 'travian/configurable'
 require 'travian/parser/view'
+require 'travian/parser/rally_point'
 require 'travian/api'
+require 'travian/api/endpoints'
 require 'travian/api/villages'
 require 'travian/api/users'
 require 'travian/api/attacks'
 require 'travian/api/resources'
-require 'travian/base_building'
 
 module Travian
 
@@ -16,10 +17,12 @@ module Travian
   class Client
     include Configurable
     include API
+    include API::Utils
     include API::Villages
     include API::Users
     include API::Attacks
     include API::Resources
+    include API::Endpoints
 
     ANSWERS = URI.parse('http://t4.answers.travian.org/index.php')
 
@@ -27,12 +30,6 @@ module Travian
       :root       => '/',
       :resources  => '/dorf1.php',
       :center     => '/dorf2.php',
-      :statistics => '/statistiken.php',
-      :reports    => '/berichte.php',
-      :messages   => '/nachrichten.php',
-      :map        => '/karte.php',
-      :villages   => '/dorf3.php',
-      :building   => '/build.php',
       :user       => '/spieler.php',
       :alliance   => '/allianz.php',
     }
@@ -73,6 +70,14 @@ module Travian
 
     def fetch(url={})
       agent.get url.is_a?(String) ? url : answers(url)
+    end
+
+    def request(method, path, params={})
+      connection.send(method.to_sym, path, params)
+    end
+
+    def connection
+      @agent
     end
 
     def url_for(page, object=nil, params={})

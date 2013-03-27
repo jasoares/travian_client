@@ -17,7 +17,7 @@ module Travian
         villages_by_name(name).first
       end
 
-      alias village village_by_name
+      #alias village village_by_name
 
       def reset_village
         get(:resources, :village => village(start_village))

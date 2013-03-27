@@ -1,27 +1,13 @@
 require 'yaml'
 require 'travian/core_ext/string'
+require 'travian/parser/resource_fields'
 require 'travian/village'
 require 'travian/resource'
 require 'travian/attack'
 require 'travian/user'
-require 'travian/building'
 
 module Travian
   module API
-
-    v_types = YAML.load_file('data/t4_village_types.yml')
-    v_types.each_pair do |type, desc|
-      desc.each_pair do |k,v|
-        v_types[type][k] = case v
-          when 'woodcutter' then 1
-          when 'clay pit' then 2
-          when 'iron mine' then 3
-          when 'cropland' then 4
-        end
-      end unless desc[1].nil?
-    end
-
-    V_TYPES = v_types
 
     def capacity_in(v)
       v = village(v) if v.is_a? String
@@ -34,10 +20,6 @@ module Travian
         *get(:resources, v).search('#production td.num').
         text.gsub(/[^\d]+/, ' ').match(/(\d+) (\d+) (\d+) (\d+)/).captures.map {|p| p.to_i }
       )
-    end
-
-    def village_types
-      V_TYPES
     end
 
     def resource_fields(v)
