@@ -1,3 +1,4 @@
+require 'travian/core_ext/string'
 require 'travian/timespan'
 require 'travian/resource'
 require 'travian/agent'
@@ -17,6 +18,7 @@ module Travian
     end
 
     alias :to_i :gid
+    alias :id :gid
 
     def cost(level=max_level)
       raise LevelOutOfRange if level < 1 || level > max_level

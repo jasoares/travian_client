@@ -4,11 +4,14 @@ require 'travian/client'
 
 module Travian
   class Village
+    extend Forwardable
 
-    attr_reader :name, :id
+    def_delegators :fields, :name, :id
 
-    def initialize(name, id)
-      @name, @id = name, id
+    attr_reader :fields, :center
+
+    def initialize(fields, center)
+      @fields, @center = fields, center
     end
 
     def production
@@ -69,6 +72,9 @@ module Travian
           *Travian.get(:resources, v).search('#production td.num').
           text.gsub(/[^\d]+/, ' ').match(/(\d+) (\d+) (\d+) (\d+)/).captures.map {|p| p.to_i }
         )
+      end
+
+      def from_responses(*responses)
       end
 
       private

@@ -1,11 +1,7 @@
 require 'mechanize'
 require 'uri'
 require 'travian/configurable'
-require 'travian/api'
-require 'travian/api/villages'
-require 'travian/api/users'
-require 'travian/api/attacks'
-require 'travian/api/resources'
+require 'travian/endpoints/account'
 require 'travian/base_building'
 
 module Travian
@@ -14,27 +10,23 @@ module Travian
 
   class Client
     include Configurable
-    include API
-    include API::Villages
-    include API::Users
-    include API::Attacks
-    include API::Resources
+    include Travian::Endpoints::Account
 
-    ANSWERS = URI.parse('http://t4.answers.travian.org/index.php')
+    # ANSWERS = URI.parse('http://t4.answers.travian.org/index.php')
 
-    LINK_TO = {
-      :root       => '/',
-      :resources  => '/dorf1.php',
-      :center     => '/dorf2.php',
-      :statistics => '/statistiken.php',
-      :reports    => '/berichte.php',
-      :messages   => '/nachrichten.php',
-      :map        => '/karte.php',
-      :villages   => '/dorf3.php',
-      :building   => '/build.php',
-      :user       => '/spieler.php',
-      :alliance   => '/allianz.php',
-    }
+    # LINK_TO = {
+    #   :root       => '/',
+    #   :resources  => '/dorf1.php',
+    #   :center     => '/dorf2.php',
+    #   :statistics => '/statistiken.php',
+    #   :reports    => '/berichte.php',
+    #   :messages   => '/nachrichten.php',
+    #   :map        => '/karte.php',
+    #   :villages   => '/dorf3.php',
+    #   :building   => '/build.php',
+    #   :user       => '/spieler.php',
+    #   :alliance   => '/allianz.php',
+    # }
 
     attr_reader :agent, :start_village
 
@@ -47,56 +39,66 @@ module Travian
       @start_village = current_village
     end
 
-    def answers(object, opts={})
-      options = { view: 'toolkit' }
-      case object
-      when BaseBuilding
-        options[:action] = 'building'
-        options[:gid] = object.gid
-      when Unit
-        options[:action] = 'troopsoverview'
-      end
-      options[:speed] = 3
-      options[:unwrapped] = ''
-      uri = ANSWERS.clone
-      uri.query = URI.encode_www_form(options)
-      get(uri.to_s)
+    # def answers(object, opts={})
+    #   options = { view: 'toolkit' }
+    #   case object
+    #   when BaseBuilding
+    #     options[:action] = 'building'
+    #     options[:gid] = object.gid
+    #   when Unit
+    #     options[:action] = 'troopsoverview'
+    #   end
+    #   options[:speed] = 3
+    #   options[:unwrapped] = ''
+    #   uri = ANSWERS.clone
+    #   uri.query = URI.encode_www_form(options)
+    #   get(uri.to_s)
+    # end
+
+    # def get(page, village=nil, params={})
+    #   unless page.is_a? String
+    #     page = "http://#{options[:server]}" + url_for(page, village, params)
+    #   end
+    #   @agent.get(page)
+    # end
+
+    def fetch(url)
+      connection.get url
     end
 
-    def get(page, village=nil, params={})
-      unless page.is_a? String
-        page = "http://#{options[:server]}" + url_for(page, village, params)
-      end
-      @agent.get(page)
+    # def url_for(page, object=nil, params={})
+    #   url = LINK_TO[page]
+    #   url += "?newdid=#{object.id}" if object
+    #   if params.size > 0
+    #     object ? url += "&" : url += "?"
+    #   end
+    #   url += params.each_pair.map do |k,v|
+    #     k == :gid ? "#{k}=#{BaseBuilding.gid_for(v)}" : "#{k}=#{v}"
+    #   end.join("&")
+    # end
+
+    def get(path, params={})
+      request(:get, path, params)
     end
 
-    def fetch(url={})
-      agent.get url.is_a?(String) ? url : answers(url)
+    def post(path, params={})
+      request(:post, path, params)
     end
 
-    def url_for(page, object=nil, params={})
-      url = LINK_TO[page]
-      url += "?newdid=#{object.id}" if object
-      if params.size > 0
-        object ? url += "&" : url += "?"
-      end
-      url += params.each_pair.map do |k,v|
-        k == :gid ? "#{k}=#{BaseBuilding.gid_for(v)}" : "#{k}=#{v}"
-      end.join("&")
+    def put(path, params={})
+      request(:put, path, params)
     end
 
-    private
+    def delete(path, params={})
+      request(:delete, path, params)
+    end
 
-    def login
-      login_form = get("http://#{credentials[:server]}").form
-      username_field = login_form.fields.find {|f| f.name = "name" }
-      username_field.value = credentials[:user]
-      login_form.password = credentials[:password]
-      login_form.checkbox_with(:name => 'lowRes').check
-      @agent.submit(login_form).search('.error.LTR').empty?
-    rescue
-      raise InvalidConfigurationError,
-        'Invalid server address, do not include "http://"'
+    def request(request_method, path, params)
+      connection.send(request_method.to_sym, path, params)
+    end
+
+    def connection
+      @agent
     end
   end
 end

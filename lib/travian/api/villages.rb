@@ -24,12 +24,6 @@ module Travian
         start_village
       end
 
-    private
-
-      def current_village
-        agent.current_page.search('ul#villageListLinks a.active').first.text
-      end
-
     end
   end
 end
