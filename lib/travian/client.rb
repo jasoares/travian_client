@@ -4,6 +4,7 @@ require 'travian/configurable'
 require 'travian/api/users'
 require 'travian/api/alliances'
 require 'travian/api/villages'
+require 'travian/api/attacks'
 require 'travian/api/buildings'
 require 'travian/base_building'
 
@@ -16,6 +17,7 @@ module Travian
     include Travian::API::Users
     include Travian::API::Alliances
     include Travian::API::Villages
+    include Travian::API::Attacks
     include Travian::API::Buildings
 
     # ANSWERS = URI.parse('http://t4.answers.travian.org/index.php')
@@ -114,9 +116,9 @@ module Travian
       login_form.password = credentials[:password]
       login_form.checkbox_with(:name => 'lowRes').check
       @agent.submit(login_form).search('.error.LTR').empty?
-    rescue
-      raise InvalidConfigurationError,
-        'Invalid server address, do not include "http://"'
+    rescue Exception => e
+      # raise InvalidConfigurationError,
+      #   'Invalid server address, do not include "http://"'
     end
   end
 end

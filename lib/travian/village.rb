@@ -5,7 +5,7 @@ require 'travian/base_village'
 module Travian
   class Village < Travian::BaseVillage
 
-    attr_reader :newdid
+    attr_reader :newdid, :incoming_attacks_count
 
     alias id newdid
 
@@ -39,6 +39,14 @@ module Travian
 
     def remaining_capacity
       capacity - resources
+    end
+
+    def incoming_attacks?
+      incoming_attacks_count > 0
+    end
+
+    def attacks
+      Travian.attacks(self) if incoming_attacks?
     end
 
     def full_in

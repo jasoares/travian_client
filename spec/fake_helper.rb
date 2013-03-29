@@ -11,6 +11,18 @@ def fake_login
     :body => "./spec/fakeweb_pages/brx_dorf1.html",
     :content_type => "text/html"
   )
+  FakeWeb.register_uri(
+    :get,
+    "http://tx3.travian.com.br/dorf1.php",
+    :body => "./spec/fakeweb_pages/brx_dorf1.html",
+    :content_type => "text/html"
+  )
+  FakeWeb.register_uri(
+    :get,
+    "http://tx3.travian.com.br/dorf2.php",
+    :body => "./spec/fakeweb_pages/brx_dorf1.html",
+    :content_type => "text/html"
+  )
 end
 
 def fake_incoming_attacks
@@ -103,7 +115,7 @@ end
 def fake_user_profile
   FakeWeb.register_uri(
     :get,
-    "http://tx3.travian.com.br/spieler.php?uid=8964",
+    "http://tx3.travian.com.br/spieler.php",
     :body => "./spec/fakeweb_pages/brx_spieler_uid_8964.html",
     :content_type => "text/html"
   )

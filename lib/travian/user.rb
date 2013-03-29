@@ -1,34 +1,17 @@
 require 'travian/base'
+require 'travian/base_user'
 require 'travian/alliance'
 require 'travian/tribe'
 
 module Travian
-  class User < Travian::Base
-    attr_reader :id, :name, :rank, :tribe, :alliance_id, :population, :logged_user?
+  class User < Travian::BaseUser
 
-    alias :uid :id
-
-    def has_alliance?
-      !!alliance
+    def incoming_attacks?
+      villages.any?(&:incoming_attacks?)
     end
 
-    def alliance
-      Travian.alliance(alliance_id) unless alliance_id.zero?
-    end
-
-    def villages
-      attrs[:villages].map do |v|
-        if logged_user?
-          inside_info = Travian.village(v[:newdid])
-          Travian::Village.new(v.merge(inside_info))
-        else
-          Travian::BaseVillage.new(v)
-        end
-      end
-    end
-
-    def villages_count
-      attrs[:villages].size
+    def villages_under_attack
+      villages.select(&:incoming_attacks?)
     end
 
   end

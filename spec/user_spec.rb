@@ -10,7 +10,6 @@ module Travian
     its(:name) { should == 'jasoares' }
     its(:rank) { should == 127 }
     its(:tribe) { should == 2 }
-    its(:alliance) { should == Alliance.new(id: 33 ) }
     its(:has_alliance?) { should == true }
 
   end

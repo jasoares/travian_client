@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 module Travian
-  describe Resource, focus: true do
+  describe Resource do
     context 'given a resource of 120 wood, 180 clay, 232 iron and 412 cereal' do
       before :each do
         @res = Resource.new(120, 180, 232, 412)

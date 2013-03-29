@@ -1,4 +1,5 @@
 require 'travian/api/utils'
+require 'travian/parser/village'
 require 'travian/parser/village_center'
 require 'travian/parser/village_fields'
 require 'travian/base_village'
@@ -23,12 +24,24 @@ module Travian
         parse_response(Travian::Parser::VillageFields, :account, :get, '/dorf1.php', options)
       end
 
-      def village(village=nil, options={})
+      def user_village(village=nil, options={})
         options.merge!(newdid: village) if village
         Travian::Village.new village_center(village, options).merge(village_fields(village, options))
       end
 
-      alias current_village village
+      def village(d, options={})
+        options.merge!(d: d)
+        attrs = parse_response(Travian::Parser::Village, :account, :get, '/karte.php', options)
+        Travian::BaseVillage.new attrs
+      end
+
+      def coords_details(x, y, options={})
+        options.merge(x: x, y: y)
+        parse_response(Travian::Parser::Village, :account, :get, '/karte.php', options)
+        Travian::BaseVillage.new attrs
+      end
+
+      alias current_village user_village
 
     private
 
