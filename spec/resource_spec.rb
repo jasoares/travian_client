@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 module Travian
-  describe Resource do
+  describe Resource, focus: true do
     context 'given a resource of 120 wood, 180 clay, 232 iron and 412 cereal' do
       before :each do
         @res = Resource.new(120, 180, 232, 412)
@@ -78,6 +78,13 @@ module Travian
         it 'returns the lowest division result with the fractional part of dividing each type of resource' do
           res = Resource.new(90, 50, 70, 40)
           (@res / res).should be_within(0.0001).of(1.3333)
+        end
+      end
+
+      describe '#abs' do
+        it 'returns the resource with all positive values' do
+          res = Resource.new(90, 40, 70, -30)
+          res.abs.should == Resource[90, 40, 70, 30]
         end
       end
 

@@ -4,11 +4,11 @@ module Travian
 
       ANSWERS_ENDPOINT = 'http://t4.answers.travian.org/?view=toolkit'
 
-      http://t4.answers.travian.org/?view=toolkit&action=building&gid=22&mb=1&speed=1&linkdescription=here
+      #http://t4.answers.travian.org/?view=toolkit&action=building&gid=22&mb=1&speed=1&linkdescription=here
 
-      http://t4.answers.travian.org/?view=toolkit&action=buildingconstructiontimes&gid=22&speed=1&linkdescription=this+link
+      #http://t4.answers.travian.org/?view=toolkit&action=buildingconstructiontimes&gid=22&speed=1&linkdescription=this+link
 
-      http://t4.answers.travian.org/?view=toolkit&action=buildingconstructiontimes&gid=40&speed=1&linkdescription=this+link&unwrapped
+      #http://t4.answers.travian.org/?view=toolkit&action=buildingconstructiontimes&gid=40&speed=1&linkdescription=this+link&unwrapped
 
       def building(building, options={})
         object_from_response(Travian::BaseBuilding, :answers, '', options.merge(action: 'building', gid: building.id))

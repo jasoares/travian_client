@@ -7,6 +7,8 @@ module Travian
     include Countable
     attr_accessor :wood, :clay, :iron, :crop
 
+    alias cereal crop
+
     def initialize(wood=0, clay=0, iron=0, crop=0)
       @wood, @clay, @iron, @crop = wood, clay, iron, crop
     end
@@ -31,6 +33,10 @@ module Travian
       self == res
     end
 
+    def %(res)
+      self.zip(res).map { |res1, res2| res1 * 100.0 / res2 }
+    end
+
     def hash
       v = 17
       v = 37 * v + @wood.hash
@@ -48,14 +54,6 @@ module Travian
 
       def [](wood=0, clay=0, iron=0, crop=0)
         Resource.new(wood, clay, iron, crop)
-      end
-
-      def parse_resources(res_data)
-        Resource[*res_data.map {|s| s.split('/').first.to_i }]
-      end
-
-      def parse_capacity(res_data)
-        Resource[*res_data.map {|s| s.split('/').last.to_i }]
       end
 
     end

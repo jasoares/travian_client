@@ -1,39 +1,36 @@
-require 'travian/resource'
-require 'travian/village'
-
 module Travian
   class Base
 
-    def current_village
-      link = current_village_link
-      Village.new(link.text, link['href'][/\d+\z/].to_i)
-    end
-
-    def villages
-      villages_ids.map do |id|
-        Travian.village(id)
+    def self.attr_reader(*attrs)
+      mod = Module.new do
+        attrs.each do |attribute|
+          define_method attribute do
+            @attrs[attribute.to_sym]
+          end
+          define_method "#{attribute}?" do
+            !!@attrs[attribute.to_sym]
+          end
+        end
       end
+      const_set(:Attributes, mod)
+      include mod
     end
 
-    def resources
-      Resource.new(*resource_data.map(&:first))
+    def initialize(attrs={})
+      @attrs = attrs
     end
 
-    def capacity
-      Resource.new(*resource_data.map(&:last))
+    def [](method)
+      send(method.to_sym)
+    rescue NoMethodError
+      nil
     end
 
-    class << self
-
-      def from_response(response)
-      end
-
-      def parse(response)
-      end
-
-      def
-
+    def attrs
+      @attrs
     end
+
+    alias to_hash attrs
 
   end
 end

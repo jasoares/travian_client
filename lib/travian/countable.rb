@@ -19,5 +19,9 @@ module Travian
     def /(countable)
       self.zip(countable).map {|a1, a2| a1.to_f / a2 }.min
     end
+
+    def abs
+      self.class.new(*self.map(&:abs))
+    end
   end
 end

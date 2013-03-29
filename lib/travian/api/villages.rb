@@ -1,27 +1,43 @@
+require 'travian/api/utils'
+require 'travian/parser/village_center'
+require 'travian/parser/village_fields'
+require 'travian/base_village'
+require 'travian/village'
+
 module Travian
   module API
     module Villages
+      include Travian::API::Utils
 
-      def villages
-        get(:villages).search('td.vil.fc a').map do |village|
-          id = $1.to_i if village['href'].match(/(\d+)\z/)
-          Village.new(village.text, id)
-        end
+      def user_villages
+        Travian.user.villages
       end
 
-      def villages_by_name(query)
-        villages.select {|v| v.name.match(/.*#{query.to_s}.*/i) }
+      alias villages user_villages
+
+      def village_center(village=nil, options={})
+        parse_response(Travian::Parser::VillageCenter, :account, :get, '/dorf2.php', options)
       end
 
-      def village_by_name(name)
-        villages_by_name(name).first
+      def village_fields(village=nil, options={})
+        parse_response(Travian::Parser::VillageFields, :account, :get, '/dorf1.php', options)
       end
 
-      alias village village_by_name
+      def village(village=nil, options={})
+        options.merge!(newdid: village) if village
+        Travian::Village.new village_center(village, options).merge(village_fields(village, options))
+      end
+
+      alias current_village village
+
+    private
+
+      def villages_ids
+        parse_response(Travian::Parser::agent.current_page).villages_ids
+      end
 
       def reset_village
-        get(:resources, :village => village(start_village))
-        start_village
+        village(start_village)
       end
 
     end

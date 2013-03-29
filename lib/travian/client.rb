@@ -1,7 +1,10 @@
 require 'mechanize'
 require 'uri'
 require 'travian/configurable'
-require 'travian/endpoints/account'
+require 'travian/api/users'
+require 'travian/api/alliances'
+require 'travian/api/villages'
+require 'travian/api/buildings'
 require 'travian/base_building'
 
 module Travian
@@ -10,7 +13,10 @@ module Travian
 
   class Client
     include Configurable
-    include Travian::Endpoints::Account
+    include Travian::API::Users
+    include Travian::API::Alliances
+    include Travian::API::Villages
+    include Travian::API::Buildings
 
     # ANSWERS = URI.parse('http://t4.answers.travian.org/index.php')
 
@@ -63,7 +69,7 @@ module Travian
     # end
 
     def fetch(url)
-      connection.get url
+      connection.get "http://#{options[:server]}#{url}"
     end
 
     # def url_for(page, object=nil, params={})
@@ -99,6 +105,18 @@ module Travian
 
     def connection
       @agent
+    end
+
+    def login
+      login_form = @agent.get("http://#{credentials[:server]}").form
+      username_field = login_form.fields.find {|f| f.name = "name" }
+      username_field.value = credentials[:user]
+      login_form.password = credentials[:password]
+      login_form.checkbox_with(:name => 'lowRes').check
+      @agent.submit(login_form).search('.error.LTR').empty?
+    rescue
+      raise InvalidConfigurationError,
+        'Invalid server address, do not include "http://"'
     end
   end
 end

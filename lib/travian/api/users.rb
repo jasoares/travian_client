@@ -1,21 +1,19 @@
+require 'travian/api/utils'
+require 'travian/parser/user'
+require 'travian/user'
+
 module Travian
   module API
     module Users
+      include Travian::API::Utils
 
-      def user_by_id(id)
-        User.parse(id)
+      def profile(user=nil, options={})
+        options.merge!(uid: user) if user
+        attrs = parse_response(Travian::Parser::User, :account, :get, '/spieler.php', options)
+        Travian::User.new(attrs) if attrs
       end
 
-      def user
-        User.parse(uid)
-      end
-
-      def uid
-        get(:resources).search('a[href^="spieler.php"]').first['href'].match(/spieler.php\?uid=(\d+)/)
-        $1.to_i
-      end
-
-      alias user_id uid
+      alias user profile
 
     end
   end

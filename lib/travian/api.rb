@@ -23,19 +23,6 @@ module Travian
 
     V_TYPES = v_types
 
-    def capacity_in(v)
-      v = village(v) if v.is_a? String
-      Resource.new(*res_data(v).map {|i| i.last })
-    end
-
-    def production_in(v)
-      v = village(v) if v.is_a? String
-      Resource.new(
-        *get(:resources, v).search('#production td.num').
-        text.gsub(/[^\d]+/, ' ').match(/(\d+) (\d+) (\d+) (\d+)/).captures.map {|p| p.to_i }
-      )
-    end
-
     def village_types
       V_TYPES
     end

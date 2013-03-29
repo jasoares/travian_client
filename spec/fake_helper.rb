@@ -135,3 +135,8 @@ def fake_user_profile_without_alliance
     :content_type => "text/html"
   )
 end
+
+def load_page(path)
+  page = File.read(File.expand_path("../fakeweb_pages/#{path}.html", __FILE__))
+  Nokogiri::HTML(page)
+end
